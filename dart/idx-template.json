@@ -1,0 +1,7 @@
+{
+  "name": "Dart",
+  "description": "Start a simple Dart service",
+  "categories": ["Backend"],
+  "icon": "https://www.gstatic.com/monospace/231115/logo_dart.svg",
+  "publisher": "Google"
+}

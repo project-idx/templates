@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "python-flask"
+version = "0.1.0"
+description = "Start a simple web app with the Flask framework for Python"
+authors = ["Google LLC"]
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+Flask = "^3.0.1"
+
+[tool.poetry.scripts]
+app = 'src.main:main'
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

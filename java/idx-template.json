@@ -1,0 +1,7 @@
+{
+  "name": "Java",
+  "description": "Start a simple Java Spring Boot service",
+  "categories": ["Backend"],
+  "icon": "https://www.gstatic.com/monospace/231115/logo_java.svg",
+  "publisher": "Google"
+}

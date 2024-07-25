@@ -1,0 +1,29 @@
+{
+  "name": "Python Flask",
+  "description": "Start a simple web app with the Flask framework for Python",
+  "categories": ["Backend"],
+  "icon": "https://www.gstatic.com/monospace/231115/logo_python.svg",
+  "publisher": "Google LLC",
+  "params": [
+    {
+      "id": "packageManager",
+      "name": "Package Manager",
+      "type": "enum",
+      "default": "pip",
+      "options": {
+        "pip": "pip",
+        "poetry": "poetry"
+      }
+    },
+    {
+      "id": "type",
+      "name": "Type",
+      "type": "enum",
+      "default": "web",
+      "options": {
+        "api": "API Server",
+        "web": "Web Server"
+      }
+    }
+  ]
+}

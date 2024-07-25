@@ -1,0 +1,19 @@
+{
+  "name": "gemini-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.12.0",
+    "base64-js": "^1.5.1",
+    "markdown-it": "^13.0.2"
+  },
+  "devDependencies": {
+    "vite": "^4.4.5"
+  }
+}

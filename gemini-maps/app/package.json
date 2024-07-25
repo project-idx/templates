@@ -1,0 +1,24 @@
+{
+  "name": "gemini-maps-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "start": "npx serve dist",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/google.maps": "^3.55.7",
+    "@types/markdown-it": "^14.0.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.2.8"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.5.0",
+    "@googlemaps/extended-component-library": "^0.6.10",
+    "@googlemaps/js-api-loader": "^1.16.6",
+    "base64-js": "^1.5.1"
+  }
+}

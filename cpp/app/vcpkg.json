@@ -1,0 +1,11 @@
+{
+  "name": "cpp-samples-cloud-run-hello-world",
+  "version-string": "unversioned",
+  "homepage": "https://github.com/GoogleCloudPlatform/cpp-samples/",
+  "description": [
+    "Shows how to deploy a C++ application to Cloud Run."
+  ],
+  "dependencies": [
+    "functions-framework-cpp"
+  ]
+}
