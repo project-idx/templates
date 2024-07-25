@@ -1,0 +1,43 @@
+# Copyright 2024 Google LLC
+
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.  
+
+# You may obtain a copy of the License at
+
+#  https://www.apache.org/licenses/LICENSE-2.0
+
+# Unless required by applicable law or agreed to in writing, software
+# distributed  
+# under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing  
+# permissions and
+# limitations under the License.
+mutation CreateUser($uid: String, $name: String, $address: String) @auth(level: NO_ACCESS) {
+  user_insert(data: {
+    uid: $uid,
+    name: $name,
+    address: $address
+  })
+}
+
+mutation CreateEmail($content: String, $subject: String, $fromUid: String) @auth(level: PUBLIC) {
+  email_insert(data: {
+    text: $content,
+    subject: $subject,
+    fromUid: $fromUid,
+    date_date: { today: true }
+  })
+}
+
+mutation CreateRecipient($emailId: UUID, $uid: String) @auth(level: PUBLIC) {
+  recipient_insert(data: {
+    emailId: $emailId,
+    userUid: $uid
+  })
+}
+
+mutation DeleteEmail($emailId: UUID, $uid: String) @auth(level: PUBLIC) {
+  recipient_delete(key: {emailId: $emailId, userUid: $uid})
+}

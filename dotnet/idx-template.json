@@ -1,0 +1,19 @@
+{
+  "name": "Dotnet",
+  "description": "Start a simple API service or blazor app with the Dotnet framework",
+  "categories": ["Backend"],
+  "icon": "https://www.gstatic.com/monospace/240318/logo_dotnet.svg",
+  "publisher": "Google",
+  "params": [
+    {
+      "id": "environment",
+      "name": "Environment",
+      "type": "enum",
+      "default": "blazor",
+      "options": {
+        "blazor": "Blazor app",
+        "web": "API service"
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Simle HTML",
+  "description": "Create a new, simple web app with plain HTML, CSS and JS ( or TypeScript)",
+  "categories": [
+    "Web app"
+  ],
+  "icon": "https://www.gstatic.com/monospace/231115/logo_html.svg"
+}
+

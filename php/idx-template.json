@@ -1,0 +1,7 @@
+{
+  "name": "PHP API Service",
+  "description": "Start a simple PHP service",
+  "categories": ["Backend"],
+  "icon": "https://www.gstatic.com/monospace/231115/logo_php.svg",
+  "publisher": "Google LLC"
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Qwik City",
+  "description": "Build a new web app using Qwik",
+  "categories": [
+    "Web app"
+  ],
+  "icon": "https://www.gstatic.com/monospace/231122/logo_qwik.svg",
+  "publisher": "Google LLC",
+  "params": []
+}

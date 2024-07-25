@@ -1,0 +1,56 @@
+<html>
+
+<!--
+  Copyright 2024 Google LLC
+  
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.  
+  
+  You may obtain a copy of the License at
+  
+   https://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed  
+  under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing  
+  permissions and
+  limitations under the License.
+-->
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Baking with Gemini</title>
+	<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+	<main>
+		<h1>Baking with Gemini</h1>
+		<form>
+			<div class="image-picker">
+				{{range $i, $img := .Images}}
+				<label class="image-choice">
+					<input type="radio" {{if eq $i 0}} checked {{end}} name="chosen-image" value="{{$img}}">
+					<img src="/static/images/{{.}}">
+				</label>
+				{{end}}
+			</div>
+			<div class="prompt-box">
+				<label>
+					<input name="prompt" placeholder="Enter instructions here" type="text"
+						value="Provide an example recipe for the baked goods in the image">
+				</label>
+				<button type="submit">Go</button>
+			</div>
+		</form>
+		<p class="output">(Response will appear here)</p>
+
+		<script src="https://unpkg.com/markdown-it@8.4.2/dist/markdown-it.min.js"></script>
+		<script src="/static/main.js"></script>
+</body>
+
+
+
+</html>
