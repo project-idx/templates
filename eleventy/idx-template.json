@@ -1,0 +1,8 @@
+{
+  "name": "Eleventy",
+  "description": "Build a new web app using Eleventy",
+  "categories": ["Web app"],
+  "icon": "",
+  "publisher": "Google LLC",
+  "params": []
+}

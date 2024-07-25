@@ -1,0 +1,26 @@
+{
+  "name": "React Native + Expo",
+  "description": "A simple React Native + Expo starter",
+  "categories": [
+    "Mobile"
+  ],
+  "icon": "https://www.gstatic.com/monospace/231115/logo_react-native.svg",
+  "publisher": "Google LLC",
+  "host": {
+    "virtualization": true
+  },
+  "params": [
+    {
+      "id": "packageManager",
+      "name": "What package manager do you want to use?",
+      "type": "enum",
+      "default": "npm",
+      "options": {
+        "npm": "npm",
+        "pnpm": "pnpm",
+        "bun": "bun"
+      },
+      "required": true
+    }
+  ]
+}

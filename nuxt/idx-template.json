@@ -1,0 +1,22 @@
+{
+  "name": "Nuxt",
+  "description": "The Intuitive Vue Framework",
+  "categories": ["Web app", "Vue"],
+  "icon": "https://www.gstatic.com/monospace/231115/nuxt_logo.svg",
+  "publisher": "Google LLC",
+  "params": [
+    {
+      "id": "packageManager",
+      "name": "Package Manager",
+      "type": "enum",
+      "default": "npm",
+      "options": {
+        "npm": "npm",
+        "yarn": "yarn",
+        "pnpm": "pnpm",
+        "bun": "bun"
+      },
+      "required": true
+    }
+  ]
+}

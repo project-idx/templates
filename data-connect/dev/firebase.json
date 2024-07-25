@@ -1,0 +1,15 @@
+{
+  "dataconnect": {
+    "source": "./dataconnect",
+    "location": "us-east-1"
+  },
+  "emulators": {
+    "dataconnect": {
+      "port": 9399
+    },
+    "ui": {
+      "enabled": false
+    },
+    "singleProjectMode": true
+  }
+}

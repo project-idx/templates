@@ -1,0 +1,7 @@
+{
+  "name": "Ruby",
+  "description": "Start a ruby app",
+  "categories": ["Backend"],
+  "icon": "https://www.gstatic.com/monospace/240318/logo_ruby.svg",
+  "publisher": "Google"
+}

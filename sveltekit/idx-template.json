@@ -1,0 +1,61 @@
+{
+  "name": "SvelteKit",
+  "description": "web development, streamlined",
+  "categories": ["Web app", "Svelte"],
+  "icon": "https://www.gstatic.com/monospace/231115/logo_python.svg",
+  "publisher": "Julien Martel",
+  "params": [
+    {
+      "id": "template",
+      "name": "Template",
+      "type": "enum",
+      "default": "default",
+      "options": {
+        "default": "SvelteKit demo app",
+        "skeleton": "Skeleton project",
+        "skeletonlib": "Library project"
+      },
+      "required": true
+    },
+    {
+      "id": "types",
+      "name": "Types",
+      "type": "enum",
+      "default": "checkjs",
+      "options": {
+        "checkjs": "JSDoc comments",
+        "typescript": "TypeScript syntax",
+        "null": "None"
+      },
+      "required": true
+    },
+    {
+      "id": "eslint",
+      "name": "Use ESLint",
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    {
+      "id": "prettier",
+      "name": "Use Prettier",
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    {
+      "id": "playwright",
+      "name": "Use Playwright",
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    {
+      "id": "vitest",
+      "name": "Use Vitest",
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  ]
+}

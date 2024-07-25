@@ -1,0 +1,8 @@
+{
+  "name": "Python Django",
+  "description": "Start a simple web app with the Django framework for Python",
+  "categories": ["Backend"],
+  "icon": "https://www.gstatic.com/monospace/231115/logo_python.svg",
+  "publisher": "Google LLC",
+  "params": []
+}

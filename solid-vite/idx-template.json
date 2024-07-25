@@ -1,0 +1,21 @@
+{
+  "name": "Solid",
+  "description": "Build a new web app using Solid and Vite",
+  "categories": [
+    "Web app"
+  ],
+  "icon": "https://www.gstatic.com/monospace/231122/logo_solidjs.svg",
+  "publisher": "Google LLC",
+  "params": [
+    {
+      "id": "language",
+      "name": "Language",
+      "type": "enum",
+      "default": "js",
+      "options": {
+        "js": "JavaScript",
+        "ts": "TypeScript"
+      }
+    }
+  ]
+}
