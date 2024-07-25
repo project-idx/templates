@@ -1,0 +1,9 @@
+{
+  "name": "Rust",
+  "description": "Build a CLI with Rust",
+  "categories": [
+    "Backend"
+  ],
+  "icon": "https://www.gstatic.com/monospace/231115/logo_rust.svg"
+}
+

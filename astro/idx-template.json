@@ -1,0 +1,47 @@
+{
+  "name": "Astro",
+  "description": "Astro builds fast content sites, powerful web applications, dynamic server APIs, and everything in-between.",
+  "categories": [
+    "Web app"
+  ],
+  "icon": "http://foo.svg",
+  "publisher": {},
+  "params": [
+    {
+      "id": "template",
+      "name": "What project template do you want to use?",
+      "type": "enum",
+      "default": "basics",
+      "options": {
+        "basics": "Basics",
+        "minimal": "Minimal",
+        "blog": "Blog",
+        "view-transitions": "View Transitions",
+        "framework-react": "React",
+        "framework-vue": "Vue",
+        "framework-svelte": "Svelte",
+        "framework-multiple": "Multiple Frameworks!?"
+      },
+      "required": true
+    },
+    {
+      "id": "typescript",
+      "name": "What language do you want to use?",
+      "type": "enum",
+      "default": "strict",
+      "options": {
+        "strict": "TypeScript on strict",
+        "strictest": "TypeScript on strictest",
+        "base": "TypeScript on relaxed"
+      },
+      "required": true
+    },
+    {
+      "id": "tailwind",
+      "name": "Do you want to use Tailwind CSS?",
+      "type": "boolean",
+      "default": true,
+      "required": false
+    }
+  ]
+}

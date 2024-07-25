@@ -1,0 +1,51 @@
+{
+  "name": "Next.js",
+  "description": "The React Framework for the Web",
+  "categories": [
+    "Web app",
+    "React"
+  ],
+  "icon": "http://foo.svg",
+  "publisher": {},
+  "params": [
+    {
+      "id": "language",
+      "name": "Language",
+      "type": "enum",
+      "default": "ts",
+      "options": {
+        "js": "JavaScript",
+        "ts": "TypeScript"
+      },
+      "required": true
+    },
+    {
+      "id": "srcDir",
+      "name": "Use a src/ dir",
+      "type": "boolean",
+      "default": true,
+      "required": false
+    },
+    {
+      "id": "eslint",
+      "name": "Use eslint",
+      "type": "boolean",
+      "default": true,
+      "required": false
+    },
+    {
+      "id": "app",
+      "name": "Use App Router",
+      "type": "boolean",
+      "default": true,
+      "required": false
+    },
+    {
+      "id": "tailwind",
+      "name": "Use Tailwind",
+      "type": "boolean",
+      "default": true,
+      "required": false
+    }
+  ]
+}

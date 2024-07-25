@@ -1,0 +1,50 @@
+{% set perPackageManager = {
+    "pip": {
+      "onCreate": "python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt",
+    },
+    "poetry": {
+      "onCreate": "python -m venv .venv && curl -sSL https://install.python-poetry.org | python -",
+    },
+}[packageManager]%}
+# To learn more about how to use Nix to configure your environment
+# see: https://developers.google.com/idx/guides/customize-idx-env
+{ pkgs, ... }: {
+  # Which nixpkgs channel to use.
+  channel = "stable-23.11"; # or "unstable"
+  # Use https://search.nixos.org/packages to find packages
+  packages = [
+    pkgs.python3
+  ];
+  idx = {
+    # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
+    extensions = [
+      "ms-python.python"{% if type == "api" %}
+      "rangav.vscode-thunder-client"{% endif %}
+    ];
+    workspace = {
+      # Runs when a workspace is first created with this `dev.nix` file
+      onCreate = {
+        install = "{{perPackageManager.onCreate}}";
+        # Open editors for the following files by default, if they exist:
+        default.openFiles = ["README.md" "src/index.html" "main.py"];
+      };{% if type == "api" %}
+      # Runs when a workspace is (re)started
+      onStart = {
+        run-server = "./devserver.sh";
+      };{% else %}# To run something each time the workspace is (re)started, use the `onStart` hook{% endif %}
+    };{% if type == "web" %}
+    # Enable previews and customize configuration
+    previews = {
+      enable = true;
+      previews = {
+        web = {
+          command = ["./devserver.sh"];
+          env = {
+            PORT = "$PORT";
+          };
+          manager = "web";
+        };
+      };
+    };{% endif %}
+  };
+}

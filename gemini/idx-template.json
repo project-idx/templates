@@ -1,0 +1,28 @@
+{
+  "name": "Gemini API",
+  "description": "Start a simple generative AI app with the Gemini API",
+  "categories": ["AI & ML"],
+  "icon": "https://www.gstatic.com/monospace/231128/logo_gemini_512.png",
+  "publisher": "Google LLC",
+  "params": [
+    {
+      "id": "environment",
+      "name": "Environment",
+      "type": "enum",
+      "default": "js-web",
+      "options": {
+        "js-web": "JavaScript Web App (Vite)",
+        "py-web": "Python Web App (Flask)",
+        "py-notebook": "Python Notebook",
+        "go-web": "Go Web App"
+      }
+    },
+    {
+      "id": "useLangChain",
+      "name": "Use LangChain",
+      "type": "boolean",
+      "default": false,
+      "required": false
+    }
+  ]
+}

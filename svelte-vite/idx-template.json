@@ -1,0 +1,21 @@
+{
+  "name": "Svelte",
+  "description": "Build a new web app using Svelte and Vite",
+  "categories": [
+    "Web app"
+  ],
+  "icon": "https://www.gstatic.com/monospace/231115/logo_svelte.svg",
+  "publisher": "Google LLC",
+  "params": [
+    {
+      "id": "language",
+      "name": "Language",
+      "type": "enum",
+      "default": "js",
+      "options": {
+        "js": "JavaScript",
+        "ts": "TypeScript"
+      }
+    }
+  ]
+}

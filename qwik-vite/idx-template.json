@@ -1,0 +1,21 @@
+{
+  "name": "Qwik",
+  "description": "Build a new web app using Qwik and Vite",
+  "categories": [
+    "Web app"
+  ],
+  "icon": "https://www.gstatic.com/monospace/231122/logo_qwik.svg",
+  "publisher": "Google LLC",
+  "params": [
+    {
+      "id": "language",
+      "name": "Language",
+      "type": "enum",
+      "default": "js",
+      "options": {
+        "js": "JavaScript",
+        "ts": "TypeScript"
+      }
+    }
+  ]
+}

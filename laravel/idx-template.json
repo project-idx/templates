@@ -1,0 +1,8 @@
+{
+  "name": "Laravel",
+  "description": "workspace/nix_templates/angular/idx-template.json",
+  "categories": [
+    "Backend"
+  ],
+  "icon": "https://www.gstatic.com/monospace/240118/logo_laravel.svg"
+}

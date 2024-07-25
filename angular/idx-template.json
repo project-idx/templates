@@ -1,0 +1,8 @@
+{
+  "name": "Angular",
+  "description": "Create a new Angular app in TypeScript built with ng-cli",
+  "categories": [
+    "Web app"
+  ],
+  "icon": "https://www.gstatic.com/monospace/231115/logo_angular.svg"
+}
