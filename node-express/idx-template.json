@@ -1,0 +1,28 @@
+{
+    "name": "Node Express Starter",
+    "description": "Start a simple backend API with Express",
+    "categories": [
+      "Backend"
+    ],
+    "icon": "https://www.gstatic.com/monospace/231115/logo_nodejs.svg",
+    "publisher": "Google LLC",
+    "params": [
+      {
+        "id": "template",
+        "name": "Template",
+        "type": "enum",
+        "default": "web",
+        "options": {
+          "web": "Web server",
+          "api": "API server"
+        }
+      },
+      {
+        "id": "typescript",
+        "name": "Use TypeScript?",
+        "type": "boolean",
+        "default": false,
+        "required": true
+      }
+    ]
+  }
