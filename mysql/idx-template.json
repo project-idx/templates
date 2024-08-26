@@ -1,0 +1,7 @@
+{
+    "name": "Mysql",
+    "description": "A simple MySQL database starter with nodejs",
+    "categories": ["Databases"],
+    "icon": "https://www.gstatic.com/monospace/231115/logo_cpp.svg",
+    "publisher": "Google"
+  }
