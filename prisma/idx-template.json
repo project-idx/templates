@@ -1,0 +1,9 @@
+{
+    "name": "Prisma",
+    "description": "A simple postgres database starter",
+    "categories": [
+        "Databases"
+    ],
+    "icon": "https://www.gstatic.com/monospace/231115/logo_cpp.svg",
+    "publisher": "Google"
+}

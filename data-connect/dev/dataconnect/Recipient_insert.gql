@@ -1,3 +1,4 @@
+#
 # Run the _insert files in this order:
 # 1. User_insert.gql
 # 2. Email_insert.gql
