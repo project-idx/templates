@@ -10,7 +10,7 @@
     # npx nuxi@latest init nuxt-idx --package-manager bun --install true --git-init true --force true
 
     # To test this configuration:
-    # /nix/store/mvr5wczap3ga80iq548n2griy8kx9ksx-idx-template/bin/idx-template ~/Monospace/workspace/nix_templates/nuxt --output-dir ~ --workspace-name foo -a '{"packageManager": "bun"}'
+    # /nix/store/mvr5wczap3ga80iq548n2griy8kx9ksx-idx-template/bin/idx-template ~/Monospace/workspace/nix_templates/public/nuxt --output-dir ~ --workspace-name foo -a '{"packageManager": "bun"}'
 
     bootstrap = ''
       npx nuxi@latest -y init "$out" \
