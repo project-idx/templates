@@ -8,6 +8,7 @@ body {
 
 main,
 .api-key-banner {
+  box-sizing: border-box;
   width: 100%;
   padding: 24px;
   max-width: 460px;
