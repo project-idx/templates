@@ -6,7 +6,7 @@
     name = "firebase.vsix";
   };
   in {
-    channel = "stable-23.11";
+    channel = "stable-24.05";
     packages = [
       (pkgs.postgresql_15.withPackages (p: [ p.pgvector ]))
       pkgs.nodejs_20
