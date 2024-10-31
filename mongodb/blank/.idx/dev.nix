@@ -18,7 +18,8 @@
       onCreate = {
         npm-install = "npm install";
         default.openFiles = [
-          "index.js" "README.md"
+          "index.js"
+          "README.md"
         ];
       };
       onStart = {
@@ -28,8 +29,7 @@
 
     previews = {
       enable = true;
-      previews = {
-      };
+      previews = { };
     };
   };
 }
