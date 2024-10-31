@@ -10,5 +10,5 @@ The server should run automatically on port `5000` when starting a workspace. To
 ```
 
 1. Use the MongoDB extension from the left-hand sidebar to connect to the local database instance — `mongodb://localhost:27017`.
-1. Open the `app.py` file to view the implementation.
+2. Open the `app.py` file to view the implementation.
 
