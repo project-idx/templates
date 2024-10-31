@@ -79,6 +79,10 @@ def convert_to_objectid(id):
     except InvalidId:
         return None
 
+@app.route('/', methods=['GET'])
+def home():
+    return jsonify({"message": "API v1.0 is running..."})
+
 # Create (POST) - Add a new user
 @app.route('/users', methods=['POST'])
 def add_user():
