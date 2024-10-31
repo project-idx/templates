@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+const mongodb = require('mongodb');
 
 /**
  * Database class for managing the MongoDB connection.
@@ -9,7 +9,7 @@ class Database {
 
     static async connectToDatabase(uri) {
         if (!Database.connection) {
-            const client = new MongoClient(uri);
+            const client = new mongodb.MongoClient(uri);
             Database.connection = await client.connect();
         }
 

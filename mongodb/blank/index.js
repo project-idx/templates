@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+const mongodb = require('mongodb');
 
 const databaseConfiguration = {
     /**
@@ -19,7 +19,7 @@ async function main() {
      * The MongoDB client instance to connect and interact with the database. 
      * See https://mongodb.github.io/node-mongodb-native/3.6/api/MongoClient.html for more details.
      */
-    const client = new MongoClient(databaseConfiguration.uri, {
+    const client = new mongodb.MongoClient(databaseConfiguration.uri, {
         /**
          * Specify the Server API version for long-term API stability.
          * See https://www.mongodb.com/docs/manual/reference/stable-api/

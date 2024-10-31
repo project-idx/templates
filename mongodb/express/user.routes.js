@@ -1,5 +1,5 @@
-const { Router } = require('express');
-const { ObjectId } = require('mongodb');
+const express = require('express');
+const mongodb = require('mongodb');
 
 const { Database } = require('./database');
 const { databaseConfiguration } = require('./config');
@@ -9,11 +9,11 @@ const connection = Database.connection;
 const database = connection.db(databaseName);
 const collection = database.collection(collectionName);
 
-const router = Router();
+const router = express.Router();
 
 function toObjectId(stringId) {
     try {
-        return ObjectId.createFromHexString(stringId);
+        return mongodb.ObjectId.createFromHexString(stringId);
     } catch (error) {
         console.error(error);
         throw new Error('Invalid ID');
