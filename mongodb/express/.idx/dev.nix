@@ -28,9 +28,6 @@
     };
 
     previews = {
-      enable = true;
-      previews = {
-      };
     };
   };
 }

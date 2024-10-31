@@ -33,9 +33,6 @@
     };
 
     previews = {
-      enable = true;
-      previews = {
-      };
     };
   };
 }
