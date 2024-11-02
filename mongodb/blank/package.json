@@ -4,7 +4,7 @@
     "description": "Blank Node.js project with MongoDB connection",
     "main": "index.js",
     "dependencies": {
-      "mongodb": "^6.9.0"
+        "@faker-js/faker": "9.1.0",
+        "mongodb": "^6.9.0"
     }
-  }
-  
+}
