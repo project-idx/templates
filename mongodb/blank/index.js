@@ -1,4 +1,5 @@
 const mongodb = require('mongodb');
+const dataGenerator = require('@faker-js/faker');
 
 const databaseConfiguration = {
     /**
@@ -70,24 +71,42 @@ async function main() {
 
         const collection = db.collection(databaseConfiguration.collectionName);
 
-        // Insert documents into the collection.
-        console.log("Inserting documents into the collection..");
-        await collection.insertMany([
-            { name: 'John Doe', email: 'john.doe@example.com', age: 30 },
-            { name: 'Jane Doe', email: 'jane.doe@example.com', age: 25 },
-            { name: 'Peter Pan', email: 'peter.pan@example.com', age: 10 }
-        ]);
+        // Generate fictional user data
+        const userCount = 5;
+        const users = Array.from({ length: userCount}, _ => {
+            const firstName = dataGenerator.faker.person.firstName();
+            const lastName = dataGenerator.faker.person.lastName();
+            const name = `${firstName} ${lastName}`;
+            const email = dataGenerator.faker.internet.email({ firstName, lastName });
+            const age = dataGenerator.faker.number.int({ min: 0, max: 100 });
 
-        // Build an unique index on the email field to prevent duplicate email addresses
-        // and improve query performance for email-based searches
-        await collection.createIndex({ email: 1 }, { unique: true });
+            return { name, email, age };
+        });
 
-        // Find documents with the email 'john.doe@example.com'
-        const query = { email: 'john.doe@example.com' };
-        const result = await collection.find(query).toArray();
+        // Insert the user documents into the collection.
+        console.log('Inserting documents into the collection...');
+        const result = await collection.insertMany(users);
+        console.log(`Inserted ${result.insertedCount} documents into the collection.`);
 
-        console.log('Documents with email \'john.doe@example.com\':');
-        console.log(result);
+
+        // Attempt to build a unique index on the email field to prevent duplicate email addresses
+        try {
+            await collection.createIndex({ email: 1 }, { unique: true });
+        } catch (error) {
+            if (error.code === 11000) {
+                console.log('Duplicate key error: Email index creation failed due to duplicates.');
+            } else {
+                throw error;
+            }
+        }
+
+        // Query the collection for the first fictional user
+        const email = users[0].email;
+        const query = { email };
+        const document = await collection.findOne(query);
+
+        console.log(`Document with email \'${email}\':`);
+        console.log(document);
     } finally {
         await client.close();
     }
