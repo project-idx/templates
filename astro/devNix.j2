@@ -1,7 +1,8 @@
 {% set perPackageManager = {
     "npm": {
         "packages": "pkgs.nodejs_20",
-        "onCreate": "npm ci --prefer-offline --no-audit --no-progress --timing" + ("\nyes | npx astro add tailwind" if tailwind == "true" else ""),
+        "onCreate": "npm ci --prefer-offline --no-audit --no-progress --timing || npm i --no-audit --no-progress --timing"
+                    + ("\nyes | npx astro add tailwind" if tailwind == "true" else ""),
         "previewCmdPrefix": "\"npm\" \"run\" \"dev\" \"--\""
     },
     "bun": {
@@ -24,7 +25,7 @@
 # see: https://developers.google.com/idx/guides/customize-idx-env
 { pkgs, ... }: {
   # Which nixpkgs channel to use.
-  channel = "stable-23.11"; # or "unstable"
+  channel = "stable-24.05"; # or "unstable"
   # Use https://search.nixos.org/packages to find packages
   packages = [{{perPackageManager.packages}}];
   # Sets environment variables in the workspace
