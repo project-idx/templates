@@ -1,0 +1,21 @@
+{
+  "name": "MongoDB",
+  "description": "A simple MongoDB database starter template",
+  "icon": "https://www.mongodb.com/assets/images/global/favicon.ico",
+  "categories": ["Databases"],
+  "publisher": "Google",
+  "params": [
+    {
+      "id": "environment",
+      "name": "Which environment would you like to use?",
+      "type": "enum",
+      "default": "blank",
+      "options": {
+        "blank": "Node.js script with a MongoDB connection",
+        "express": "REST API with Express and MongoDB",
+        "flask": "REST API with Flask and MongoDB"
+      },
+      "required": true
+    }
+  ]
+}
