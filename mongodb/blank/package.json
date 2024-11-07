@@ -1,0 +1,10 @@
+{
+    "name": "mongodb-idx-blank",
+    "version": "1.0.0",
+    "description": "Blank Node.js project with MongoDB connection",
+    "main": "index.js",
+    "dependencies": {
+        "@faker-js/faker": "9.1.0",
+        "mongodb": "^6.9.0"
+    }
+}
