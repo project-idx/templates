@@ -16,7 +16,6 @@
         "basics": "Basics",
         "minimal": "Minimal",
         "blog": "Blog",
-        "view-transitions": "View Transitions",
         "framework-react": "React",
         "framework-vue": "Vue",
         "framework-svelte": "Svelte",
