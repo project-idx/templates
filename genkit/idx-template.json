@@ -1,0 +1,21 @@
+{
+  "name": "Genkit",
+  "description": "Build a new web app using Genkit",
+  "categories": [
+    "Web app"
+  ],
+  "icon": "https://www.gstatic.com/monospace/231115/logo_react.svg",
+  "params": [
+    {
+      "id": "language",
+      "type": "enum",
+      "required": true,
+      "name": "Language",
+      "options": {
+        "js": "JavaScript",
+        "go": "Go"
+      }
+    }
+  ],
+  "publisher": "Google LLC"
+}
