@@ -1,6 +1,6 @@
 # Genkit
 
-<a href="https://idx.google.com/new?template=https%3A%2F%2Fgithub.com%2Fi2amsam%2Ftemplates%2Ftree%2Fupdate-genkit-example%2Fgenkit">
+<a href="https://idx.google.com/new?template=https%3A%2F%2Fgithub.com%2Fproject-idx%2Ftemplates%2Ftree%2Fmain%2Fgenkit">
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
