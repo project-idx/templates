@@ -30,8 +30,6 @@ and exact match.
 `
 );
 
-
 (async () => {
     console.log((await prompt({ inspiration: "Yogi Berra" })).output);
-    console.log((await prompt({ inspiration: "Hercules" })).output);
 })();
