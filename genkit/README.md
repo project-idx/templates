@@ -1,38 +1,35 @@
-# Genkit + IDX
+# Genkit
 
-## Accept the Genkit CLI terms
-Open the IDX terminal and run the `genkit` command. This will show a prompt for the terms and conditions for Genkit. Hit enter to accept.
+<a href="https://idx.google.com/new?template=https%3A%2F%2Fgithub.com%2Fproject-idx%2Ftemplates%2Ftree%2Fmain%2Fgenkit">
+  <picture>
+    <source
+      media="(prefers-color-scheme: dark)"
+      srcset="https://cdn.idx.dev/btn/open_dark_32.svg">
+    <source
+      media="(prefers-color-scheme: light)"
+      srcset="https://cdn.idx.dev/btn/open_light_32.svg">
+    <img
+      height="32"
+      alt="Open in IDX"
+      src="https://cdn.idx.dev/btn/open_purple_32.svg">
+  </picture>
+</a>
+
+This is a simple demonstration web app using the [Firebase Genkit Library](https://github.com/firebase/genkit) with Gemini to generate recipes from images.
+
+To get started, get an API key at https://g.co/ai/idxGetGeminiKey and enter it in `.idx/dev.nix` and rebuild the environment.
+
+After running this code, open a new terminal (`Ctrl`+ `` ` ``) and run `genkit ui:start` to start the interactive Genkit Developer UI and inspect the calls to Gemini.
+
 
 ## Set up your Gemini API Key
-Use the IDX Integration Panel to the left to get an API Key and replace it in the `.idx/dev.nix` file.
+Get a Gemini API Key from https://g.co/ai/idxGetGeminiKey 
 
-```nix
-  # Sets environment variables in the workspace
-  env = {
-    # You can get a Gemini API key through the IDX Integrations panel to the left!
-    GOOGLE_API_KEY = "<your-api-key>";
-  };
+and add it to `.idx/dev.nix` in the `GOOGLE_GENAI_API_KEY`
 ```
+## Start the Genkit Developer UI
+Run the Genkit Developer UI with `genkit ui:start`
 
 ## Set up the IDX Preview Panel
 
 Near the bottom of `.idx/dev.nix` add the preview panel configuration below and rebuild the environment.
-
-```nix
-  idx.previews = {
-    enable = true;
-    previews = [
-      {
-        command = [
-          "npx"
-          "genkit"
-          "start"
-          "--port"
-          "$PORT"
-        ];
-        manager = "web";
-        id = "web";
-      }
-    ];
-  };
-```
