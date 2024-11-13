@@ -11,7 +11,7 @@
   # Sets environment variables in the workspace
   env = {
     #TODO Get a API key from https://g.co/ai/idxGetGeminiKey 
-    GOOGLE_GENAI_API_KEY = "TODO"; 
+    GOOGLE_GENAI_API_KEY = "***REMOVED***"; 
   };
   idx = {
     internal.templates-cli.enable = true;
@@ -20,22 +20,7 @@
       # "vscodevim.vim"
       "golang.go"
     ];
-    # Enable previews
-    previews = {
-      enable = true;
-      previews = {
-        # web = {
-        #   # Example: run "npm run dev" with PORT set to IDX's defined port for previews,
-        #   # and show it in IDX's web preview panel
-        #   command = ["npm" "run" "dev"];
-        #   manager = "web";
-        #   env = {
-        #     # Environment variables to set for your server
-        #     PORT = "$PORT";
-        #   };
-        # };
-      };
-    };
+
     # Workspace lifecycle hooks
     workspace = {
       # Runs when a workspace is first created
@@ -45,8 +30,7 @@
       };
       # Runs when the workspace is (re)started
       onStart = {
-        # Example: start a background task to watch and re-build backend code
-        # watch-backend = "npm run watch-backend";
+        run-server = "npm run dev";
       };
     };
   };

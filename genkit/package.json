@@ -4,8 +4,7 @@
   "description": "A simple Firebase Genkit app template",
   "main": "index.js",
   "scripts": {
-    "dev": "GENKIT_ENV=dev npx tsx --watch index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "genkit start -- npx tsx --watch index.ts",
   },
   "keywords": [],
   "author": "",
