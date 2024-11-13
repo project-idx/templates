@@ -1,18 +1,12 @@
-# Genkit + IDX
-
-## Accept the Genkit CLI terms
-Open the IDX terminal and run the `genkit` command. This will show a prompt for the terms and conditions for Genkit. Hit enter to accept.
+# Genkit
 
 ## Set up your Gemini API Key
-Use the IDX Integration Panel to the left to get an API Key and replace it in the `.idx/dev.nix` file.
+Get a Gemini API Key from https://g.co/ai/idxGetGeminiKey 
 
-```nix
-  # Sets environment variables in the workspace
-  env = {
-    # You can get a Gemini API key through the IDX Integrations panel to the left!
-    GOOGLE_API_KEY = "<your-api-key>";
-  };
+and add it to `.idx/dev.nix` in the `GOOGLE_GENAI_API_KEY`
 ```
+## Start the Genkit Developer UI
+Run the Genkit Developer UI with `genkit ui:start`
 
 ## Set up the IDX Preview Panel
 
