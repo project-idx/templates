@@ -4,7 +4,7 @@
   "description": "A simple Firebase Genkit app template",
   "main": "index.js",
   "scripts": {
-    "dev": "genkit start -- npx tsx --watch index.ts",
+    "dev": "genkit start -- npx tsx --watch index.ts"
   },
   "keywords": [],
   "author": "",
