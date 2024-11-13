@@ -1,7 +1,7 @@
 {
     "name": "genkit-gemin-web-example",
     "version": "1.0.0",
-    "description": "This is a simple demonstration web app using the [Firebase Genkit SDK](https://github.com/firebase/genkit) to generate recipes for images.",
+    "description": "This is a simple demonstration web app using Firebase Genkit to generate recipes for images.",
     "main": "index.js",
     "scripts": {
         "dev": "GENKIT_ENV=dev npx tsx --watch server.ts"
