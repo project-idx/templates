@@ -5,12 +5,14 @@
   channel = "stable-24.05"; # or "unstable"
   # Use https://search.nixos.org/packages to find packages
   packages = [
-    pkgs.go
     pkgs.nodejs_20
     pkgs.util-linux
   ];
   # Sets environment variables in the workspace
-  env = {};
+  env = {
+    #TODO Get a API key from https://g.co/ai/idxGetGeminiKey 
+    GOOGLE_GENAI_API_KEY = "TODO"; 
+  };
   idx = {
     internal.templates-cli.enable = true;
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
@@ -38,10 +40,8 @@
     workspace = {
       # Runs when a workspace is first created
       onCreate = {
-        # Example: install JS dependencies from NPM
-        # npm-install = "npm install";
-        # Open editors for the following files by default, if they exist:
-        # default.openFiles = [ ".idx/dev.nix" "README.md" ];
+        npm-install = "npm ci --no-audit --prefer-offline --no-progress --timing";
+        default.openFiles = [ "README.md" "index.ts" ];
       };
       # Runs when the workspace is (re)started
       onStart = {
