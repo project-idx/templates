@@ -11,7 +11,7 @@
   # Sets environment variables in the workspace
   env = {
     #TODO Get a API key from https://g.co/ai/idxGetGeminiKey 
-    GOOGLE_GENAI_API_KEY = "AIzaSyAolatfTOz_rt1ld-FEnaa1GYZ01zlaSik"; 
+    GOOGLE_GENAI_API_KEY = "TODO"; 
   };
   idx = {
     internal.templates-cli.enable = true;
