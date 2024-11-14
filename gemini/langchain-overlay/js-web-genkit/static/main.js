@@ -1,5 +1,5 @@
 let form = document.querySelector('form');
-let output = document.querySelector('.output');
+let output = document.querySelector('main .output');
 
 form.onsubmit = async (ev) => {
     ev.preventDefault()
