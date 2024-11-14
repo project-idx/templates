@@ -7,7 +7,7 @@
   packages = [
     pkgs.nodejs_20
     pkgs.util-linux
-    pkgs.go
+    # pkgs.go
   ];
   # Sets environment variables in the workspace
   env = {
@@ -19,7 +19,7 @@
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
       # "vscodevim.vim"
-      "golang.go"
+      # "golang.go"
     ];
 
     # Workspace lifecycle hooks
