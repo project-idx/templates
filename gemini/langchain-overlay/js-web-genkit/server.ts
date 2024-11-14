@@ -4,9 +4,8 @@ import express from "express";
 import { ChatGoogleGenerativeAI } from '@langchain/google-genai'
 import { ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate } from '@langchain/core/prompts';
 import { StringOutputParser } from '@langchain/core/output_parsers';
-import { GenkitTracer } from 'genkitx-langchain';
 import { RunnableSequence } from '@langchain/core/runnables';
-import { HumanMessage, SystemMessage } from "@langchain/core/messages";
+import { HumanMessage } from "@langchain/core/messages";
 
 const port = process.env.PORT || 3000;
 

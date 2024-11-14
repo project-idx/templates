@@ -12,6 +12,7 @@
       "default": "js-web",
       "options": {
         "js-web": "JavaScript Web App (Vite)",
+        "js-web-genkit": "JavaScript Web App (Genkit)",
         "py-web": "Python Web App (Flask)",
         "py-notebook": "Python Notebook",
         "go-web": "Go Web App"
