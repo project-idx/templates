@@ -7,6 +7,7 @@
   packages = [
     pkgs.nodejs_20
     pkgs.util-linux
+    pkgs.go
   ];
   # Sets environment variables in the workspace
   env = {
