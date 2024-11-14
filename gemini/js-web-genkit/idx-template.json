@@ -1,8 +1,0 @@
-{
-  "name": "Genkit",
-  "description": "A sample app for showing using Gemini with Genkit",
-  "categories": ["Web app", "Backend", "AI & ML" ],
-  "icon": "https://firebase.google.com/static/images/brand-guidelines/logo-vertical.png",
-  "website": "https://firebase.google.com/docs/genkit",
-  "publisher": "Google LLC"
-}
