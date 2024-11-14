@@ -3,7 +3,7 @@
   bootstrap = ''
     cp -rf ${./.}/${environment} "$WS_NAME"
     chmod -R +w "$WS_NAME"
-    ${if useLangChain then "cp -rf ${./.}/langchain-overlay/${environment}/* $WS_NAME" else "" }
+    ${if useLangChain then "cp -rfa ${./.}/langchain-overlay/${environment}/. $WS_NAME" else "" }
     chmod -R +wx "$WS_NAME"
     ${if useLangChain && environment == "js-web" then "mv $WS_NAME/example.env $WS_NAME/.env" else "" }
     mv "$WS_NAME" "$out"
