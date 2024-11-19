@@ -30,6 +30,13 @@
       "required": true
     },
     {
+      "id": "prettier",
+      "name": "Use Prettier",
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    {
       "id": "eslint",
       "name": "Use ESLint",
       "type": "boolean",
@@ -37,10 +44,10 @@
       "required": true
     },
     {
-      "id": "prettier",
-      "name": "Use Prettier",
+      "id": "vitest",
+      "name": "Use Vitest",
       "type": "boolean",
-      "default": true,
+      "default": false,
       "required": true
     },
     {
@@ -51,8 +58,43 @@
       "required": true
     },
     {
-      "id": "vitest",
-      "name": "Use Vitest",
+      "id": "tailwindcss",
+      "name": "Use Tailwind CSS",
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    {
+      "id": "drizzle",
+      "name": "Use Drizzle",
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    {
+      "id": "lucia",
+      "name": "Use Lucia",
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    {
+      "id": "mdsvex",
+      "name": "Use MDsveX",
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    {
+      "id": "paraglide",
+      "name": "Use Paraglide",
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    {
+      "id": "storybook",
+      "name": "Use Storybook",
       "type": "boolean",
       "default": false,
       "required": true
