@@ -23,8 +23,8 @@
       "type": "enum",
       "default": "checkjs",
       "options": {
-        "checkjs": "JSDoc comments",
-        "typescript": "TypeScript syntax",
+        "jsdoc": "JSDoc comments",
+        "ts": "TypeScript syntax",
         "null": "None"
       },
       "required": true
