@@ -1,4 +1,4 @@
-import {create} from 'create-svelte';
+import {create} from 'sv';
 
 function parseArgs() {
   const args = {};
