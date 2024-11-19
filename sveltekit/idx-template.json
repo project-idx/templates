@@ -9,11 +9,11 @@
       "id": "template",
       "name": "Template",
       "type": "enum",
-      "default": "default",
+      "default": "demo",
       "options": {
-        "default": "SvelteKit demo app",
-        "skeleton": "Skeleton project",
-        "skeletonlib": "Library project"
+        "demo": "Demo app",
+        "minimal": "Minimal app",
+        "library": "Library project"
       },
       "required": true
     },
