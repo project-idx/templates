@@ -11,7 +11,7 @@
 
       # install every time so that we get latest version of `create-svelte`
       npm install
-      node init.js name="$WS_NAME" template=${template} types=${types} prettier=${toString prettier} eslint=${toString eslint} playwright=${toString playwright} vitest=${toString vitest}
+      node init.js name="$WS_NAME" --template=${template} --types=${types} prettier=${toString prettier} eslint=${toString eslint} playwright=${toString playwright} vitest=${toString vitest}
 
       chmod -R +w "$WS_NAME"
       cp -rf "$WS_NAME" "$out"
