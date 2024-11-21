@@ -1,6 +1,6 @@
 {
   "name": "MongoDB",
-  "description": "A simple MongoDB database starter template",
+  "description": "MongoDB starter kit with Node, Express, and Flask API templates",
   "icon": "https://www.mongodb.com/assets/images/global/favicon.ico",
   "categories": ["Databases"],
   "publisher": "Google",
