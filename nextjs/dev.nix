@@ -24,10 +24,10 @@
         # Open editors for the following files by default, if they exist:
         default.openFiles = [
           # Cover all the variations of language, src-dir, router (app/pages)
-          "pages/index.tsx" "pages/index.jsx"
-          "src/pages/index.tsx" "src/pages/index.jsx"
-          "app/page.tsx" "app/page.jsx"
-          "src/app/page.tsx" "src/app/page.jsx"
+          "pages/index.tsx" "pages/index.js"
+          "src/pages/index.tsx" "src/pages/index.js"
+          "app/page.tsx" "app/page.js"
+          "src/app/page.tsx" "src/app/page.js"
         ];
       };
       # To run something each time the workspace is (re)started, use the `onStart` hook
