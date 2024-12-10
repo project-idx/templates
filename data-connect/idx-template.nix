@@ -2,23 +2,46 @@
 
 rm -rf ./test && \
 idx-template \
-  /home/user/<workspace>/data-connect \
-  --output-dir /home/user/<workspace>/test -a '{}'
+  /home/user/community-templates/dataconnect \
+  --output-dir /home/user/community-templates/template-test -a '{}'
 
 */
-{pkgs, ... }: {
+{pkgs, platform ? "web", appType ? "blank", ... }: {
   packages = [
-    pkgs.postgresql
+    pkgs.nodejs_20
   ];
 
-  bootstrap = ''
+  bootstrap = let 
+    platformPrefix = if platform == "web" then "nextjs" else "flutter";
+    suffix = if platform == "web" && appType == "quickstart" then "movie-app" else if platform == "flutter" && appType == "quickstart" then "movie" else appType;
+    sample = "${platformPrefix}-${suffix}";
+    in ''
     mkdir "$out"
-    initdb -D "$out"/local
+    chmod -R u+w "$out"
     mkdir "$out"/.idx
-    cp -r ${./dev}/* "$out"
-    cp ${./dev}/.firebaserc "$out"/.firebaserc
-    cp ${./dev}/.graphqlrc.yaml "$out"/.graphqlrc.yaml
-    cp ${./dev.nix} "$out"/.idx/dev.nix
+    
+    ${
+    if sample == "flutter-blank" || sample == "flutter-movie" then "cp -r ${./flutter}/dev.nix \"$out\"/.idx/dev.nix"
+      else "cp ${./.}/${sample}/dev.nix \"$out\"/.idx/dev.nix"
+    }
+    
+    ${
+      if sample == "nextjs-movie-app" then "cp -r ${./nextjs-movie-app}/* \"$out\""
+      else if sample == "nextjs-blank" then "cp -r ${./nextjs-blank}/* \"$out\""
+      else if sample == "flutter-blank" then "cp -r ${./flutter-blank}/* \"$out\""
+      else "cp -r ${./flutter-movie}/* \"$out\""
+    }
+    chmod -R u+w "$out"
+    ${
+      if sample == "flutter-blank" || sample == "flutter-movie" then "cp ${./flutter}/Caddyfile \"$out\"/" else ""
+    }
+    ${
+      if sample == "flutter-blank" || sample == "flutter-movie" then "cp ${./flutter}/error_handler.dart \"$out\"/lib/" else ""
+    }
+    cp ${./.firebaserc} "$out"/.firebaserc
+    cp ${./.graphqlrc.yaml} "$out"/.graphqlrc.yaml
+    mkdir "$out"/.vscode
+    cp ${./.vscode/settings.json} "$out"/.vscode/settings.json
     chmod -R u+w "$out"
   '';
 }
