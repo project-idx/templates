@@ -157,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Center(
               child: Text(
-                  "Open the Firebase Data Connect Extension and click 'Start Emulators' to get started."),
+                  "Open the Firebase Data Connect Extension (located on the left sidebar) and click 'Start Emulators' to get started."),
             ),
           ],
         ),
