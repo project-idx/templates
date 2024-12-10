@@ -37,7 +37,6 @@ dependencies:
   cupertino_icons: ^1.0.8
   firebase_core: ^3.3.0
   firebase_data_connect: ^0.1.2
-  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
