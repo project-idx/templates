@@ -33,9 +33,6 @@ idx-template \
     }
     chmod -R u+w "$out"
     ${
-      if sample == "flutter-blank" || sample == "flutter-movie" then "cp ${./flutter}/installDeps.sh \"$out\"/" else ""
-    }
-    ${
       if sample == "flutter-blank" || sample == "flutter-movie" then "cp ${./flutter}/Caddyfile \"$out\"/" else ""
     }
     ${

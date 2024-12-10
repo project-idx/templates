@@ -54,8 +54,10 @@ class ShowError extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Text(
-          "Run flutterfire configure to continue and refresh the page."),
+      home: const Scaffold(
+          body: SafeArea(
+              child: Text(
+                  "Open a new terminal below by clicking +. Run \"flutterfire configure -y -a com.example.blank\" to continue and refresh the page."))),
     );
   }
 }
