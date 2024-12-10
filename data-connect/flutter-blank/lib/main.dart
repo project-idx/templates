@@ -1,12 +1,11 @@
+import 'package:blank/generated/default.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'firebase_options.dart';
 import 'error_handler.dart';
-import 'package:blank/generated/blank.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +19,7 @@ void main() async {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    MovieConnectorConnector.instance.dataConnect
+    DefaultConnector.instance.dataConnect
         .useDataConnectEmulator(hostName, port, isSecure: true);
     runApp(const MyApp());
   } catch (_) {

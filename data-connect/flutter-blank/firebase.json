@@ -4,7 +4,8 @@
   },
   "emulators": {
     "dataconnect": {
-      "port": 9400
+      "port": 9400,
+      "dataDir": "./dataconnect/.dataconnect/pgliteData"
     },
     "ui": {
       "enabled": false
