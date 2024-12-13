@@ -58,20 +58,20 @@ class ShowError extends StatelessWidget {
       ),
       home: const Scaffold(
           body: SafeArea(
-              child: Center(
-                  child: Column(
+              child: SelectionArea(
+                  child: Center(
+                      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SelectableText(
+          Text(
             "1. Open the Firebase Data Connect extension on the left sidebar, log in, and select a Firebase Project.",
           ),
-          SelectableText(
-              "2. Open a new terminal below by clicking the '+' icon"),
-          SelectableText(
+          Text("2. Open a new terminal below by clicking the '+' icon"),
+          Text(
               "3. Run \"flutterfire configure -y -a com.example.blank\" to continue and refresh the page."),
         ],
-      )))),
+      ))))),
     );
   }
 }
