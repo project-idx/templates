@@ -9,19 +9,19 @@
       FIREBASE_DATACONNECT_POSTGRESQL_STRING =  "postgresql://user:mypassword@localhost:5432/dataconnect?sslmode=disable";
     };
   
-    idx.extensions = [
-      "mtxr.sqltools"
-      "mtxr.sqltools-driver-pg"
-      "GraphQL.vscode-graphql-syntax"
-      "GoogleCloudTools.firebase-dataconnect-vscode"
-    ];
-
+ 
     services.postgres = {
       extensions = ["pgvector"];
       enable = true;
     };
 
     idx = {
+      extensions = [
+        "mtxr.sqltools"
+        "mtxr.sqltools-driver-pg"
+        "GraphQL.vscode-graphql-syntax"
+        "GoogleCloudTools.firebase-dataconnect-vscode"      
+      ];
       workspace = {
         onCreate = {
           update-firebase = "npm install -g firebase-tools";
