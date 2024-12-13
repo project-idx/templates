@@ -1,6 +1,7 @@
 import 'package:blank/generated/default.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/link.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 
@@ -60,7 +61,7 @@ class ShowError extends StatelessWidget {
               child: Center(
                   child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SelectableText(
             "1. Open the Firebase Data Connect extension on the left sidebar, log in, and select a Firebase Project.",
@@ -149,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: const Center(
+      body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
@@ -169,9 +170,23 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Center(
-              child: Text(
-                  "Open the Firebase Data Connect Extension (located on the left sidebar) and click 'Start Emulators' to get started."),
-            ),
+                child: Column(
+              children: [
+                const Text(
+                    "Open the Firebase Data Connect Extension (located on the left sidebar) and click 'Start Emulators' to get started developing your app."),
+                Link(
+                  uri: Uri.parse(
+                      'https://firebase.google.com/docs/data-connect/flutter-sdk'),
+                  target: LinkTarget.blank,
+                  builder: (BuildContext context, FollowLink? followLink) =>
+                      ElevatedButton(
+                    onPressed: followLink,
+                    child: const Text('Visit our documentation to learn more'),
+                    // ... other properties here ...
+                  ),
+                )
+              ],
+            ))
           ],
         ),
       ),
