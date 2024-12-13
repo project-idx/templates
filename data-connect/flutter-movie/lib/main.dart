@@ -93,9 +93,10 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SafeArea(
           child: SingleChildScrollView(
         child: _showMessage || !isSetup
-            ? Column(
+            ? Center(
+                child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
                       padding: const EdgeInsets.all(30.0),
@@ -111,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               'Refresh this preview page'
                             ]))
                 ],
-              )
+              ))
             : Column(
                 children: <Widget>[
                   ListMovies(
