@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
 
 import 'firebase_options.dart';
 import 'error_handler.dart';
@@ -11,16 +12,18 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   int port = 443;
   String hostName = Uri.base.host;
+  bool isSecure = true;
   if (!kIsWeb) {
     hostName = '10.0.2.2';
     port = 9403;
+    isSecure = false;
   }
   try {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
     DefaultConnector.instance.dataConnect
-        .useDataConnectEmulator(hostName, port, isSecure: true);
+        .useDataConnectEmulator(hostName, port, isSecure: isSecure);
     runApp(const MyApp());
   } catch (_) {
     runApp(const ShowError());
@@ -54,10 +57,31 @@ class ShowError extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Scaffold(
+      home: Scaffold(
           body: SafeArea(
-              child: Text(
-                  "Open a new terminal below by clicking +. Run \"flutterfire configure -y -a com.example.blank\" to continue and refresh the page."))),
+              child: Column(
+        children: [
+          const SelectableText(
+            "1. Open the Firebase Data Connect extension on the left sidebar, log in, and select a Firebase Project.",
+          ),
+          const SelectableText(
+              "2. Open a new terminal below by clicking the '+' icon"),
+          Row(
+            children: [
+              const SelectableText("3. Run"),
+              TextButton(
+                child: const Text(
+                    "\"flutterfire configure -y -a com.example.blank\""),
+                onPressed: () {
+                  Clipboard.setData(const ClipboardData(
+                      text: "flutterfire configure -y -a com.example.blank"));
+                },
+              ),
+              const SelectableText(" to continue and refresh the page."),
+            ],
+          )
+        ],
+      ))),
     );
   }
 }
