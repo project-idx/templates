@@ -1,11 +1,6 @@
 # To learn more about how to use Nix to configure your environment
 # see: https://developers.google.com/idx/guides/customize-idx-env
 { pkgs, ... }: {
-  processes = {
-    writeEnv = {
-      command = "echo \"HOST=$WEB_HOST\" > .env";
-    };
-  };
 
   # Which nixpkgs channel to use.
   channel = "stable-24.05"; # or "unstable"
@@ -68,10 +63,10 @@
           command = ["flutter" "run" "--machine" "-d" "web-server" "--web-hostname" "0.0.0.0" "--web-port" "9003"];
           manager = "flutter";
         };
-        android = {
-          command = ["flutter" "run" "--machine" "-d" "android" "-d" "localhost:5555"];
-          manager = "flutter";
-        };
+        # android = {
+        #   command = ["flutter" "run" "--machine" "-d" "android" "-d" "localhost:5555"];
+        #   manager = "flutter";
+        # };
       };
     };
   };

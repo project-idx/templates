@@ -1,26 +1,28 @@
 import 'package:blank/generated/default.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/link.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 
 import 'firebase_options.dart';
-import 'error_handler.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   int port = 443;
   String hostName = Uri.base.host;
+  bool isSecure = true;
   if (!kIsWeb) {
     hostName = '10.0.2.2';
     port = 9403;
+    isSecure = false;
   }
   try {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
     DefaultConnector.instance.dataConnect
-        .useDataConnectEmulator(hostName, port, isSecure: true);
+        .useDataConnectEmulator(hostName, port, isSecure: isSecure);
     runApp(const MyApp());
   } catch (_) {
     runApp(const ShowError());
@@ -56,8 +58,20 @@ class ShowError extends StatelessWidget {
       ),
       home: const Scaffold(
           body: SafeArea(
-              child: Text(
-                  "Open a new terminal below by clicking +. Run \"flutterfire configure -y -a com.example.blank\" to continue and refresh the page."))),
+              child: SelectionArea(
+                  child: Center(
+                      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "1. Open the Firebase Data Connect extension on the left sidebar, log in, and select a Firebase Project.",
+          ),
+          Text("2. Open a new terminal below by clicking the '+' icon"),
+          Text(
+              "3. Run \"flutterfire configure -y -a com.example.blank\" to continue and refresh the page."),
+        ],
+      ))))),
     );
   }
 }
@@ -136,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: const Center(
+      body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
@@ -156,9 +170,23 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Center(
-              child: Text(
-                  "Open the Firebase Data Connect Extension (located on the left sidebar) and click 'Start Emulators' to get started."),
-            ),
+                child: Column(
+              children: [
+                const Text(
+                    "Open the Firebase Data Connect Extension (located on the left sidebar) and click 'Start Emulators' to get started developing your app."),
+                Link(
+                  uri: Uri.parse(
+                      'https://firebase.google.com/docs/data-connect/flutter-sdk'),
+                  target: LinkTarget.blank,
+                  builder: (BuildContext context, FollowLink? followLink) =>
+                      ElevatedButton(
+                    onPressed: followLink,
+                    child: const Text('Visit our documentation to learn more'),
+                    // ... other properties here ...
+                  ),
+                )
+              ],
+            ))
           ],
         ),
       ),
