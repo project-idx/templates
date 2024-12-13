@@ -3,10 +3,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/services.dart';
 
 import 'firebase_options.dart';
-import 'error_handler.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,31 +55,22 @@ class ShowError extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Scaffold(
+      home: const Scaffold(
           body: SafeArea(
-              child: Column(
+              child: Center(
+                  child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SelectableText(
+          SelectableText(
             "1. Open the Firebase Data Connect extension on the left sidebar, log in, and select a Firebase Project.",
           ),
-          const SelectableText(
+          SelectableText(
               "2. Open a new terminal below by clicking the '+' icon"),
-          Row(
-            children: [
-              const SelectableText("3. Run"),
-              TextButton(
-                child: const Text(
-                    "\"flutterfire configure -y -a com.example.blank\""),
-                onPressed: () {
-                  Clipboard.setData(const ClipboardData(
-                      text: "flutterfire configure -y -a com.example.blank"));
-                },
-              ),
-              const SelectableText(" to continue and refresh the page."),
-            ],
-          )
+          SelectableText(
+              "3. Run \"flutterfire configure -y -a com.example.blank\" to continue and refresh the page."),
         ],
-      ))),
+      )))),
     );
   }
 }
