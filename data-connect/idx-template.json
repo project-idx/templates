@@ -1,6 +1,6 @@
 {
-  "name": "Data Connect",
-  "description": "Build a new web app using Data Connect",
+  "name": "Firebase Data Connect",
+  "description": "Get started with Firebase Data Connect in IDX",
   "categories": ["Web app", "Flutter app", "Databases"],
   "icon": "https://www.gstatic.com/monospace/240513/logo_firebase.svg",
   "publisher": "Google LLC",
@@ -10,7 +10,7 @@
   "params": [
     {
       "id": "platform",
-      "description": "Build a new app using Data Connect",
+      "description": "The platform you'd like to create the app for",
       "type": "enum",
       "name": "Platform",
       "required": true,
@@ -21,7 +21,7 @@
     },
     {
       "id": "appType",
-      "description": "Build a new app using Data Connect",
+      "description": "The type of app you'd like to get started with",
       "type": "enum",
       "name": "App Type",
       "required": true,
