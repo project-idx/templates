@@ -6,7 +6,7 @@ This template helps you get started with [Prisma Postgres](https://www.prisma.io
 
 Follow these instructions once this project was opened in IDX.
 
-### 1. Create Prisma Postgres database
+### 1. Create Prisma Postgres database & set environment variables
 
 First, you need to create your Prisma Postgres instance:
 
@@ -17,15 +17,19 @@ First, you need to create your Prisma Postgres instance:
 1. In the **Region** dropdown, select the region that's closest to your current location, e.g. **US East (N. Virginia)**.
 1. Click the **Create project** button.
 
-At this point, you'll be redirected to the **Database** page where you will need to wait a few seconds while the status of your database changes from **`PROVISIONING`**, to **`ACTIVATING`** to **`CONNECTED`**.
+Once the database is ready, copy the `DATABASE_URL` environment variable and set it in [`.idx/dev.nix`](.idx/dev.nix#L15).
 
-Once that setup process has finished, move to the next step.
+In step 5, you're going to receive real-time events from your database via [Prisma Pulse](https://www.prisma.io/pulse). In order to do that, you need to enable Pulse in the Platform Console:
 
-### 2. Set database connection URL and Pulse API key
+1. Select the **Pulse** tab in your project.
+1. Find and click the **Enable Pulse** button.
+1. In the section **Add Pulse to your application**, click the **Generate API key** button.
 
-TBD: Instructions for setting `DATABASE_URL` and `PULSE_API_KEY` as env vars.
+Once that's done, copy the `PULSE_API_KEY` environment variable and set it in [`.idx/dev.nix`](.idx/dev.nix#L16).
 
-### 4. Create database tables (with a schema migration)
+Now, click the **Rebuild Environment** button for the environment variables to take effect.
+
+### 2. Run a schema migration
 
 Next, you need to create the tables in your database. You can do this by creating and executing a schema migration with the following command of the Prisma CLI:
 
@@ -35,7 +39,7 @@ npx prisma migrate dev --name init
 
 This will map the `User` and `Post` models that are defined in your [Prisma schema](./prisma/schema.prisma) to your database. You can also review the SQL migration that was executed and created the tables in the newly created `prisma/migrations` directory.
 
-### 5. Execute queries with Prisma ORM
+### 3. Execute queries with Prisma ORM
 
 The [`src/queries.ts`](./src/queries.ts) script contains a number of CRUD queries that will write and read data in your database. You can execute it by running the following command in your terminal:
 
@@ -49,7 +53,7 @@ Once the script has completed, you can inspect the logs in your terminal or use 
 npx prisma studio
 ```
 
-### 6. Explore caching with Prisma Accelerate
+### 4. Explore caching with Prisma Accelerate
 
 The [`src/caching.ts`](./src/caching.ts) script contains a sample query that uses [Stale-While-Revalidate](https://www.prisma.io/docs/accelerate/caching#stale-while-revalidate-swr) (SWR) and [Time-To-Live](https://www.prisma.io/docs/accelerate/caching#time-to-live-ttl) (TTL) to cache a database query using Prisma Accelerate. You can execute it as follows:
 
@@ -75,9 +79,9 @@ You'll notice that the time the query took will be a lot shorter this time, e.g.
 The query took 300.5655280000001ms.
 ```
 
-### 6. Observe real-time events in your database
+### 5. Observe real-time events in your database with Prisma Pulse
 
-The  [`src/realtime.ts`](./src/realtime.ts) script contains a demo for receiving real-time change [events](https://www.prisma.io/docs/pulse/database-events) from your database. You can start the script as follows:
+The  [`src/realtime.ts`](./src/realtime.ts) script contains a demo for receiving real-time change [events](https://www.prisma.io/docs/pulse/database-events) from your database via Prisma Pulse. You can start the script as follows:
 
 ```
 npm run realtime
