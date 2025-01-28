@@ -39,7 +39,7 @@ idx-template \
       if sample == "flutter-blank" || sample == "flutter-movie" then "cp ${./flutter}/error_handler.dart \"$out\"/lib/" else ""
     }
     ${
-      if sample == "web-movie-app" then "
+      if sample == "nextjs-movie-app" then "
         mv \"$out\"/app/src/lib/firebase.idx.tsx \"$out\"/app/src/lib/firebase.tsx  
         mv \"$out\"/app/vite.config.idx.ts \"$out\"/app/vite.config.ts 
       " else ""
