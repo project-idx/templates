@@ -9,7 +9,7 @@ process.on('SIGINT', () => {
 dotenv.config();
 const apiKey: string = process.env.PULSE_API_KEY ?? '';
 if (!apiKey || apiKey === "") {
-  console.log(`Please set the \`PULSE_API_KEY\` environment variable in the \`.env\` file.`);
+  console.log(`Please set the \`PULSE_API_KEY\` environment variable in the \`.idx/dev.nix\` file.`);
   process.exit(1);
 }
 
