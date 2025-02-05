@@ -1,4 +1,4 @@
-{pkgs, database ? "app-ppg", ... }: {
+{pkgs, database ? "ppg", ... }: {
   packages = [
     pkgs.nodejs_20
   ];
@@ -8,7 +8,7 @@
     sample = "app-${databaseSuffix}";
     in ''
     mkdir "$out"
-    cp -rf ${./.}/${database} "$out"
+    cp -rf ${./.}/${sample}/* "$out"
     chmod -R u+w "$out"
   '';
 }
