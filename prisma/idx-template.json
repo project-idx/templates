@@ -1,10 +1,8 @@
 {
   "name": "Prisma",
   "description": "Serverless PostgreSQL with type-safe ORM, caching & real-time",
-  "categories": [
-    "Databases"
-  ],
-  "icon": "https://raw.githubusercontent.com/prisma/presskit/1c8937b2aefd6417515bcee30272a960df20a8d8/Assets/Prisma-DarkSymbol.svg",
+  "categories": ["Databases"],
+  "icon": "https://www.gstatic.com/monospace/240718/logo_prisma.svg",
   "publisher": "Google",
   "params": [
     {
