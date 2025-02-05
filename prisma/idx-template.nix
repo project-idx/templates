@@ -1,4 +1,4 @@
-{pkgs, database ? "ppg", ... }: {
+{pkgs, database ? "app-ppg", ... }: {
   packages = [
     pkgs.nodejs_20
   ];
@@ -8,11 +8,7 @@
     sample = "app-${databaseSuffix}";
     in ''
     mkdir "$out"
-    chmod -R u+w "$out"
-    ${
-      if sample == "app-ppg" then "cp -r ${./app-ppg}/* \"$out\""
-      else "cp -r ${./app-sqlite}/* \"$out\""
-    }
+    cp -rf ${./.}/${database} "$out"
     chmod -R u+w "$out"
   '';
 }
