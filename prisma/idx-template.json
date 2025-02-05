@@ -1,9 +1,22 @@
 {
-    "name": "Prisma",
-    "description": "A simple postgres database starter",
-    "categories": [
-        "Databases"
-    ],
-    "icon": "https://www.gstatic.com/monospace/231115/logo_cpp.svg",
-    "publisher": "Google"
+  "name": "Prisma",
+  "description": "Serverless PostgreSQL with type-safe ORM, caching & real-time",
+  "categories": [
+    "Databases"
+  ],
+  "icon": "https://raw.githubusercontent.com/prisma/presskit/1c8937b2aefd6417515bcee30272a960df20a8d8/Assets/Prisma-DarkSymbol.svg",
+  "publisher": "Google",
+  "params": [
+    {
+      "id": "database",
+      "description": "The database you want to use with Prisma ORM",
+      "type": "enum",
+      "name": "Database",
+      "required": true,
+      "options": {
+        "ppg": "Prisma Postgres",
+        "sqlite": "SQLite"
+      }
+    }
+  ]
 }
