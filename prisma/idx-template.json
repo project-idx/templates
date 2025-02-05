@@ -1,6 +1,6 @@
 {
   "name": "Prisma",
-  "description": "Get started with a Prisma Postgres or SQLite database using Prisma ORM.",
+  "description": "Serverless PostgreSQL with type-safe ORM, caching & real-time",
   "categories": [
     "Databases"
   ],
