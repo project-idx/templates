@@ -12,8 +12,8 @@
       "name": "Database",
       "required": true,
       "options": {
-        "app-ppg": "Prisma Postgres",
-        "app-sqlite": "SQLite"
+        "ppg": "Prisma Postgres",
+        "sqlite": "SQLite"
       }
     }
   ]
