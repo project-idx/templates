@@ -8,9 +8,9 @@
     sample = "app-${databaseSuffix}";
     in ''
     mkdir "$out"
+    mkdir "$out"/.idx
     cp -rf ${./.}/${sample}/* "$out"
-    cp ${./.}/${sample}/.idx/dev.nix "$out"/.idx/dev.nix
     chmod -R u+w "$out"
-    install --mode u+rw ${./dev.nix} "$out"/.idx/dev.nix
+    install --mode u+rw ${./.}/${sample}/.idx/dev.nix "$out"/.idx/dev.nix
     '';
 }
