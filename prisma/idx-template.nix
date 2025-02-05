@@ -8,7 +8,7 @@
     sample = "app-${databaseSuffix}";
     in ''
     mkdir "$out"
-    cp -rf ${./.}/${sample}/* "$out"
+    cp -rf ${./.}/${sample} "$WS_NAME"
     chmod -R u+w "$out"
   '';
 }
