@@ -9,7 +9,7 @@
       "id": "database",
       "description": "The database you want to use with Prisma ORM",
       "type": "enum",
-      "name": "Database",
+      "name": "Select your database",
       "required": true,
       "options": {
         "ppg": "Prisma Postgres",
