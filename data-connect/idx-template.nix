@@ -9,27 +9,29 @@ idx-template \
 {pkgs, platform ? "web", appType ? "blank", ... }: {
   packages = [
     pkgs.nodejs_20
+    pkgs.git
   ];
 
   bootstrap = let 
-    platformPrefix = if platform == "web" then "nextjs" else "flutter";
+    platformPrefix = if platform == "web" then "js" else "flutter";
     suffix = if platform == "web" && appType == "quickstart" then "movie-app" else if platform == "flutter" && appType == "quickstart" then "movie" else appType;
     sample = "${platformPrefix}-${suffix}";
     in ''
     mkdir "$out"
     chmod -R u+w "$out"
     mkdir "$out"/.idx
-    
+    ${
+    if sample == "quickstart-js" then "git clone -b mtewani/idx-updates --single-branch https://github.com/firebase/quickstart-js \"$out\"" else ""}
     ${
     if sample == "flutter-blank" || sample == "flutter-movie" then "cp -r ${./flutter}/dev.nix \"$out\"/.idx/dev.nix"
       else "cp ${./.}/${sample}/dev.nix \"$out\"/.idx/dev.nix"
     }
     
     ${
-      if sample == "nextjs-movie-app" then "cp -r ${./nextjs-movie-app}/* \"$out\""
-      else if sample == "nextjs-blank" then "cp -r ${./nextjs-blank}/* \"$out\""
+      if sample == "js-blank" then "cp -r ${./nextjs-blank}/* \"$out\""
       else if sample == "flutter-blank" then "cp -r ${./flutter-blank}/* \"$out\""
-      else "cp -r ${./flutter-movie}/* \"$out\""
+      else if sample == "flutter-movie" then "cp -r ${./flutter-movie}/* \"$out\""
+      else ""
     }
     chmod -R u+w "$out"
     ${
@@ -39,7 +41,7 @@ idx-template \
       if sample == "flutter-blank" || sample == "flutter-movie" then "cp ${./flutter}/error_handler.dart \"$out\"/lib/" else ""
     }
     ${
-      if sample == "nextjs-movie-app" then "
+      if sample == "js-quickstart" then "
         mv \"$out\"/app/src/lib/firebase.idx.tsx \"$out\"/app/src/lib/firebase.tsx  
         mv \"$out\"/app/vite.config.idx.ts \"$out\"/app/vite.config.ts 
       " else ""
