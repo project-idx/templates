@@ -7,7 +7,7 @@
   packages = [
     pkgs.gh
     pkgs.nodejs_23
-    pkgs.elixir_1_18
+    pkgs.elixir_1_16
     pkgs.elixir-ls
   ];
   # Sets environment variables in the workspace
