@@ -1,0 +1,23 @@
+{
+  "name": "Elixir",
+  "description": "Create a new Phoenix app in Elixir",
+  "categories": [
+    "Web app",
+    "Backend"
+  ],
+  "icon": "",
+  "publisher": "Mahfuzullah Galib",
+  "params": [
+    {
+      "id": "environment",
+      "name": "Environment",
+      "type": "enum",
+      "default": "web",
+      "options": {
+        "web": "Web server",
+        "web-template": "Web server with HTML templates",
+        "api": "API Server"
+      }
+    }
+  ]
+}
