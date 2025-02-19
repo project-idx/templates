@@ -1,10 +1,10 @@
 /*
 rm -rf ./test && \
 idx-template \
-  /home/user/g \
-  --output-dir /home/user/g/test -a '{ "language": "go", "tos": "true" }'
+  /home/user/templates \
+  --output-dir /home/user/g/test -a '{ "language": "js" }'
 */
-{pkgs, language ? "js", tos ? "false", ... }: {  
+{pkgs, language ? "js", ... }: {  
   packages = [
     pkgs.nodejs
     pkgs.go
