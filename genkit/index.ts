@@ -1,35 +1,37 @@
-import { genkit, z } from 'genkit';
-import { googleAI, gemini15Flash } from '@genkit-ai/googleai'
+import { genkit } from 'genkit/beta';
+import { googleAI, gemini20Flash } from '@genkit-ai/googleai';
+import { createInterface } from "node:readline/promises";
+import { createWeatherTool, createHackerNewsTool, createHackerNewsSummaryTool } from './tools'
 
-const ai = genkit({
-    plugins: [googleAI()],
+export const ai = genkit({
+	plugins: [googleAI()],
+	model: gemini20Flash,
 });
 
-const prompt = ai.definePrompt({
-    name: 'Character Prompt',
-    model: gemini15Flash,
-    input: {
-        schema: z.object({
-            inspiration: z.string()
-        })
-    },
-    output: {
-        format: 'json',
-        schema: z.object({
-            name: z.string(),
-            strength: z.number(),
-            intelligence: z.number(),
-            description: z.string(),
-        })
-    },
-}, `
-You're a expert DnD designer, create a new character.
+// Define tools for chat 
+const weatherTool = createWeatherTool(ai);
+const hackerNewsTool = createHackerNewsTool(ai);
+const hackerNewsSummaryTool = createHackerNewsSummaryTool({ 
+	hackerNewsTool, 
+	ai 
+});
 
-Base the character on {{inspiration}} but don't make it
-and exact match.
-`
-);
+// New! Genkit gives you persistent chat sessions.
+// You can still call ai.definePrompt() to create an executable prompt
+const chat = ai.chat({
+	model: gemini20Flash,
+	system: `You are a helpful assistant. If the user asks you what you can do, respond with your tools and creative uses.`,
+	tools: [weatherTool, hackerNewsSummaryTool],
+});
 
-(async () => {
-    console.log((await prompt({ inspiration: "Yogi Berra" })).output);
-})();
+async function main() {
+	console.log("You're chatting with Gemini. Ctrl-C to quit.\n");
+	const readline = createInterface(process.stdin, process.stdout);
+	while (true) {
+		const userInput = await readline.question("> ");
+		const result = await chat.send(userInput)
+		console.log(result.text);
+	}
+}
+
+main();

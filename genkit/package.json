@@ -3,19 +3,21 @@
   "version": "1.0.0",
   "description": "A simple Firebase Genkit app template",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "genkit start -- npx tsx --watch index.ts"
+    "dev": "genkit start -- npx tsx --watch index.ts",
+    "create:env": "echo '#!/usr/bin/env bash\n\n# source ./set_env.sh\nexport GOOGLEAI_API_KEY=\"\"' > set_env.sh"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "genkit-cli": "^0.9",
+    "genkit-cli": "^1.0.5",
     "tsx": "^4.19.2",
     "typescript": "^5.6.3"
   },
   "dependencies": {
-    "@genkit-ai/googleai": "^0.9",
-    "genkit": "^0.9"
+    "@genkit-ai/googleai": "^1.0.5",
+    "genkit": "^1.0.5"
   }
 }

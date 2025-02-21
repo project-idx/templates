@@ -17,6 +17,8 @@
 
 This is a simple demonstration web app using the [Firebase Genkit Library](https://github.com/firebase/genkit) with Gemini to generate recipes from images.
 
-To get started, get an API key at https://g.co/ai/idxGetGeminiKey and enter it in `.idx/dev.nix` and rebuild the environment.
+## Getting Started
+1. Get an API key in at https://g.co/ai/idxGetGeminiKey or in the left IDX integrations panel. 
+1. Open a new terminal (`Ctrl`+ `` ` ``)
+1. Run `npm run dev` in the terminal and accept the terms of service. 
 
-After rebuilding the environment, open a new terminal (`Ctrl`+ `` ` ``) and follow the link that said "Genkit Developer UI" to use Genkit's built-in local developer playground.

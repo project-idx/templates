@@ -27,6 +27,7 @@
       # Runs when a workspace is first created
       onCreate = {
         npm-install = "npm ci --no-audit --prefer-offline --no-progress --timing";
+        npm-create-env = "npm run create:env";
         default.openFiles = [ "README.md" "index.ts" ];
       };
       # Runs when the workspace is (re)started
