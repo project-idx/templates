@@ -1,31 +1,16 @@
 import { z } from 'genkit';
 
-export const UserSchema = z.object({
-  username: z.string().describe('The name of the user who sent the message'),
-  fullName: z.string().describe('The full name of the user who sent the message'),
-});
-
 export const HNItemSchema = z.object({
-  id: z.number(),
-  title: z.string(),
-  points: z.number().optional(),
-  user: z.string().optional(),
-  time: z.number(),
-  time_ago: z.string(),
+  id: z.number().optional(),
+  title: z.string().optional(),
+  points: z.number().nullable().optional(),
+  user: z.string().nullable().optional(),
+  time: z.number().optional(),
+  time_ago: z.string().optional(),
   comments_count: z.number().optional(),
-  type: z.string(),
+  type: z.string().optional(),
   url: z.string().optional(),
   domain: z.string().optional(),
-}).partial();
-
-export const HNItemsSchema = z.array(HNItemSchema);
-
-export const HNPageSchema = z.object({
-	page: z.number().describe('The page to get the news for'),
-	items: HNItemsSchema,
 });
 
-
-export const PageSchema = z.object({
-	page: z.number().describe('The page to get the news for')
-})
+export const HNItemsSchema = z.array(HNItemSchema.partial());
