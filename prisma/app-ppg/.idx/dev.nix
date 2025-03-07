@@ -13,7 +13,6 @@
   # Sets environment variables in the workspace
   env = {
     DATABASE_URL="";
-    PULSE_API_KEY="";
   };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
