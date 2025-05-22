@@ -15,7 +15,7 @@ import "./style.css";
 
 // TODO: Get a Gemini API key:
 /*
- * 1. Open the Project IDX view by pressing Ctrl+Shift+P / Cmd+Shift+P and type "IDX focus", then select "IDX: Focus on Project IDX View"
+ * 1. Open the Firebase Studio view by pressing Ctrl+Shift+P / Cmd+Shift+P and type "IDX focus", then select "IDX: Focus on Firebase Studio View"
  * 2. Click on the "Gemini API" integration and authenticate.
  * 3. Click "Get API Key" to get an API key.
  * 4. Create or open a file named .env.local in the root directory. The .local suffix keeps secrets out of source control.
@@ -25,7 +25,7 @@ const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
 // TODO: Get a Google Maps Platform API key:
 /*
- * 1. Open the Project IDX view by pressing Ctrl+Shift+P / Cmd+Shift+P and type "IDX focus", then select "IDX: Focus on Project IDX View"
+ * 1. Open the Firebase Studio view by pressing Ctrl+Shift+P / Cmd+Shift+P and type "IDX focus", then select "IDX: Focus on Firebase Studio View"
  * 2. Click on the "Google Maps Platform" integration.
  * 3. Click "Enable APIs" to enable the Google Maps Platform APIs.
  * 4. Click "Get API Key" to get an API key.

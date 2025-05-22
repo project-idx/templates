@@ -28,7 +28,7 @@ form.onsubmit = async (ev) => {
 
     // Call the multimodal model, and get a stream of results
     let stream = streamGemini({
-      model: 'gemini-1.5-flash', // or gemini-1.5-pro
+      model: 'gemini-2.0-flash',
       contents,
     });
 
