@@ -8,7 +8,7 @@ This template provides a sample app demonstrating use of the Gemini API with mul
 
 In order for the Gemini API features to work, you'll need to add a Gemini API key as a local variable.
 
-1. Open the Project IDX view by pressing Ctrl+Shift+P / Cmd+Shift+P and type "IDX focus", then select "IDX: Focus on Project IDX View"
+1. Open the Firebase Studio view by pressing Ctrl+Shift+P / Cmd+Shift+P and type "IDX focus", then select "IDX: Focus on Firebase Studio View"
 2. Click on the "Gemini API" integration and authenticate.
 3. Click "Get API Key" to get an API key.
 4. Create or open a file named .env.local in the root directory. The .local suffix keeps secrets out of source control.
@@ -19,7 +19,7 @@ In order for the Gemini API features to work, you'll need to add a Gemini API ke
 
 In order for the Maps JavaScript API features to work, you'll need to add a Google Maps Platform API key as a local variable.
 
-1. Open the Project IDX view by pressing Ctrl+Shift+P / Cmd+Shift+P and type "IDX focus", then select "IDX: Focus on Project IDX View"
+1. Open the Firebase Studio view by pressing Ctrl+Shift+P / Cmd+Shift+P and type "IDX focus", then select "IDX: Focus on Firebase Studio View"
 2. Click on the "Google Maps Platform" integration.
 3. Click "Enable APIs" to enable the Google Maps Platform APIs.
 4. Click "Get API Key" to get an API key.

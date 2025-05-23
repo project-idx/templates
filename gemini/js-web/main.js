@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
+import { GoogleGenAI, HarmBlockThreshold, HarmCategory } from "@google/genai";
 import Base64 from 'base64-js';
 import MarkdownIt from 'markdown-it';
 import { maybeShowApiKeyBanner } from './gemini-api-banner';
@@ -6,7 +6,7 @@ import './style.css';
 
 // 🔥🔥 FILL THIS OUT FIRST! 🔥🔥
 // Get your Gemini API key by:
-// - Selecting "Add Gemini API" in the "Project IDX" panel in the sidebar
+// - Selecting "Add Gemini API" in the "Firebase Studio" panel in the sidebar
 // - Or by visiting https://g.co/ai/idxGetGeminiKey
 let API_KEY = 'TODO';
 
@@ -30,16 +30,17 @@ form.onsubmit = async (ev) => {
       {
         role: 'user',
         parts: [
-          { inline_data: { mime_type: 'image/jpeg', data: imageBase64, } },
+          { inlineData: { mimeType: 'image/jpeg', data: imageBase64 } },
           { text: promptInput.value }
         ]
       }
     ];
 
     // Call the multimodal model, and get a stream of results
-    const genAI = new GoogleGenerativeAI(API_KEY);
-    const model = genAI.getGenerativeModel({
-      model: "gemini-1.5-flash", // or gemini-1.5-pro
+    const ai = new GoogleGenAI({ apiKey: API_KEY });
+    const stream = await ai.models.generateContentStream({
+      model: "gemini-2.0-flash",
+      contents,
       safetySettings: [
         {
           category: HarmCategory.HARM_CATEGORY_HARASSMENT,
@@ -48,13 +49,11 @@ form.onsubmit = async (ev) => {
       ],
     });
 
-    const result = await model.generateContentStream({ contents });
-
     // Read from the stream and interpret the output as markdown
     let buffer = [];
     let md = new MarkdownIt();
-    for await (let response of result.stream) {
-      buffer.push(response.text());
+    for await (let response of stream) {
+      buffer.push(response.text);
       output.innerHTML = md.render(buffer.join(''));
     }
   } catch (e) {

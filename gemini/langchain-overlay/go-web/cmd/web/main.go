@@ -17,12 +17,12 @@ import (
 
 // 🔥 FILL THIS OUT FIRST! 🔥
 // Get your Gemini API key by:
-// - Selecting "Add Gemini API" in the "Project IDX" panel in the sidebar
+// - Selecting "Add Gemini API" in the "Firebase Studio" panel in the sidebar
 // - Or by visiting https://g.co/ai/idxGetGeminiKey
 // This can also be provided as the API_KEY environment variable.
 //
 // NOTE: Make sure to `Hard Restart` the web preview in IDX
-// when updating this variable, using `> Project IDX: Hard Restart`.
+// when updating this variable, using `> Firebase Studio: Hard Restart`.
 var apiKey = "TODO"
 
 func usage() {

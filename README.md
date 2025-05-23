@@ -1,7 +1,7 @@
-<h1 align="center">Project IDX Official Templates</h1>
+<h1 align="center">Firebase Studio Official Templates</h1>
 <div align="center">A library of templates to get you started faster and explore tools, frameworks, and runtimes.</div>
 
-![Project IDX Official Templates](./official-templates.png)
+![Firebase Studio Official Templates](./official-templates.png)
 
 ## Want us to support a template?
 First, check out our [Community Template Repository](https://github.com/project-idx/community-templates) to see if the template already exists. If you want us to officially support a template, create a post in our [community discourse](https://community.idx.dev) for us to support an official template.
