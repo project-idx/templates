@@ -12,7 +12,7 @@ export const ai = genkit({
 
 logger.setLogLevel('debug');
 const recipePrompt = ai.definePrompt({
-  name: 'Recipies prompt',
+  name: 'Recipes prompt',
   model: googleAI.model('gemini-2.0-flash'),
   input: {
     schema: z.object({
