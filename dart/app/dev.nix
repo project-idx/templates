@@ -13,7 +13,6 @@
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
       "Dart-Code.dart-code"
-      "rangav.vscode-thunder-client"
     ];
     workspace = {
       # Runs when a workspace is first created
