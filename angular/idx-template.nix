@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+  channel = "stable-24.11";
   packages = [ pkgs.nodejs_20 ];
   bootstrap = ''
     npx --prefer-offline -y @angular/cli new --skip-git --defaults --skip-install --directory "$WS_NAME" "$WS_NAME"
