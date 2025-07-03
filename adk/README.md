@@ -3,7 +3,7 @@
 You can find more information about the basics of using the ADK framework in the [Agent Development Kit Documentation](https://google.github.io/adk-docs/get-started/quickstart).
 
 ## Try it out!
-<a href="https://idx.google.com/new?template=https://github.com/firebase-studio/templates/tree/main/adk-python-quickstart">
+<a href="https://idx.google.com/new?template=https://github.com/firebase-studio/templates/tree/main/adk">
   <picture>
     <source
       media="(prefers-color-scheme: dark)"
