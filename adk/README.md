@@ -2,7 +2,7 @@
 
 To get started, your agent needs to make secure calls to an external LLM service.
 
-Set up your GOOGLE_API_KEY in your [.env](./multi_tool_agent/example.env) file. Get your Gemini API key from https://g.co/ai/idxGetGeminiKey.
+Set up your GOOGLE_API_KEY in your [.env](./multi_tool_agent/.env.local) file. Get your Gemini API key from https://g.co/ai/idxGetGeminiKey.
 
 To use Google Cloud Vertex AI follow the [adk-docs]](https://google.github.io/adk-docs/get-started/quickstart/#set-up-the-model).
 

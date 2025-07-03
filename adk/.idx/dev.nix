@@ -21,7 +21,7 @@
         install =
           "python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt";
         # Open editors for the following files by default, if they exist:
-        default.openFiles = [ "./multi_tool_agent/agent.py"];
+        default.openFiles = [".env.local" "./multi_tool_agent/agent.py"];
       };
     };
     # Enable previews and customize configuration
