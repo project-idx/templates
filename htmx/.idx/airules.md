@@ -28,7 +28,114 @@ This is an HTMX project, designed to create a dynamic and interactive user exper
 ### Project Structure
 - **Partials/Fragments:** Organize your templates into a clear structure, with a dedicated directory for HTMX partials/fragments.
 
-## 4. Interaction Guidelines
+## 4. HTMX by Example
+
+### Combining Attributes
+You can combine multiple HTMX attributes on a single element to create complex interactions.
+
+```html
+<input type="search" name="q"
+    hx-get="/search"
+    hx-trigger="keyup changed delay:500ms"
+    hx-target="#search-results"
+    hx-indicator="#spinner"
+>
+<div id="search-results"></div>
+<img id="spinner" class="htmx-indicator" src="/spinner.gif">
+```
+**Explanation:**
+- `hx-get="/search"`: When triggered, sends a GET request to `/search`.
+- `hx-trigger="keyup changed delay:500ms"`: Triggers the request on `keyup` after a 500ms delay.
+- `hx-target="#search-results"`: Places the response from the server into the `<div id="search-results">`.
+- `hx-indicator="#spinner"`: Shows the element with the ID `spinner` during the request.
+
+### Controlling Content Placement
+- **`hx-target`**: Use any CSS selector to target an element. `this` targets the element itself. You can also use `closest <selector>` to find a parent element or `find <selector>` to find a child element.
+- **`hx-swap`**: Controls how the new content is placed.
+  - `innerHTML` (default): Replaces the content of the target.
+  - `outerHTML`: Replaces the entire target element.
+  - `beforeend`: Appends the new content as the last child of the target.
+  - `afterend`: Inserts the new content after the target element.
+
+**Example: Infinite Scroll**
+```html
+<div id="items">
+  ... initial items ...
+</div>
+<button hx-get="/items?page=2" hx-target="#items" hx-swap="beforeend">
+  Load More
+</button>
+```
+When the button is clicked, the new items are fetched and appended to the `#items` div. The server would then return a new button with `hx-get="/items?page=3"`.
+
+### Progressive Enhancement with `hx-boost`
+`hx-boost` allows you to upgrade standard HTML anchors and forms to use AJAX requests, while still allowing them to work for users with JavaScript disabled.
+
+```html
+<div hx-boost="true">
+  <a href="/about">About Us</a>
+  <a href="/contact">Contact</a>
+
+  <form action="/subscribe" method="post">
+    ...
+  </form>
+</div>
+```
+With `hx-boost="true"` on a parent element:
+- Clicks on the `<a>` tags will automatically be converted to GET requests.
+- The response will be loaded into the `<body>` of the page by default.
+- Form submissions will be converted to POST requests.
+
+### Server-Side Logic (Pseudo-code)
+Your server-side code should handle requests from HTMX and return HTML fragments.
+
+**Handling a GET request for a partial:**
+```
+function handle_get_news(request):
+  // 1. Fetch news data from a database or API
+  news_data = database.get_latest_news()
+
+  // 2. Render an HTML partial with the data
+  html_fragment = render_template("partials/news_list.html", news=news_data)
+
+  // 3. Return the HTML fragment
+  return HTTPResponse(body=html_fragment)
+```
+
+**Handling a POST request from a form:**
+```
+function handle_subscribe(request):
+  // 1. Get the email from the request body
+  email = request.body.get("email")
+
+  // 2. Validate and save the email
+  if is_valid_email(email):
+    database.save_subscriber(email)
+    // 3. Return a success message as an HTML fragment
+    return HTTPResponse(body="<p>Thanks for subscribing!</p>")
+  else:
+    // 4. Return an error message as an HTML fragment
+    return HTTPResponse(body="<p>Invalid email address.</p>", status_code=400)
+```
+
+**Using HTMX Response Headers:**
+You can also send special headers in your response to trigger client-side behavior.
+
+```
+function handle_delete_item(request, item_id):
+  // 1. Delete the item from the database
+  database.delete_item(item_id)
+
+  // 2. Set the HX-Trigger header to trigger a custom event
+  response = HTTPResponse(status_code=200)
+  response.set_header("HX-Trigger", "item-deleted")
+
+  // 3. Return an empty response, as the UI update will be handled by the event
+  return response
+```
+In your frontend, you can then listen for this `item-deleted` event on a parent element to refresh the list of items.
+
+## 5. Interaction Guidelines
 
 - Assume the user is familiar with HTML and a backend language but may be new to HTMX.
 - When generating code, provide explanations for HTMX-specific attributes and concepts.

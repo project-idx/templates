@@ -29,7 +29,119 @@ This project is a Genkit application, designed to build and manage AI-powered fe
 - **Serverless Deployment:** Deploy your Genkit flows as serverless functions using Firebase Cloud Functions or Cloud Run.
 - **Firebase Genkit Monitoring:** Use Firebase Genkit Monitoring to track key metrics (latency, error rates, token usage) and inspect traces in production.
 
-## 4. Interaction Guidelines
+## 4. Genkit by Example
+
+### Defining Schemas with Zod
+Use Zod to define the input and output schemas for your flows. This provides type safety and validation.
+
+**`src/schemas.ts`**
+```typescript
+import { z } from 'zod';
+
+export const MenuSuggestionRequestSchema = z.object({
+  theme: z.string().describe('The theme of the restaurant (e.g., "Italian", "French")'),
+});
+
+export const MenuSuggestionResponseSchema = z.object({
+  itemName: z.string(),
+  description: z.string(),
+});
+```
+
+### Prompt Engineering with Dotprompt
+Create `.prompt` files in your `prompts` directory to separate your prompts from your code.
+
+**`prompts/menuSuggestion.prompt`**
+```
+---
+model: gemini-1.5-flash
+input:
+  schema:
+    theme: string
+output:
+  schema: MenuSuggestionResponseSchema
+---
+
+Suggest a creative menu item for a {{theme}}-themed restaurant. Provide a name and a short description for the item.
+```
+
+### Building and Composing Flows
+Define your AI logic in flows. Flows can be simple or composed of other flows.
+
+**`src/index.ts`**
+```typescript
+import { configureGenkit } from '@genkit-ai/core';
+import { firebase } from '@genkit-ai/firebase';
+import { googleAI } from '@genkit-ai/googleai';
+import { defineFlow, startFlowsServer } from '@genkit-ai/flow';
+import {
+  MenuSuggestionRequestSchema,
+  MenuSuggestionResponseSchema,
+} from './schemas';
+import { menuSuggestion } from './prompts';
+import { z } from 'zod';
+
+configureGenkit({
+  plugins: [
+    firebase(),
+    googleAI({
+      // You can specify the API version to use.
+      // The default is 'v1beta'.
+      apiVersion: 'v1beta',
+    }),
+  ],
+  logLevel: 'debug',
+  enableTracingAndMetrics: true,
+});
+
+// A simple flow that takes a string and returns a string.
+export const helloFlow = defineFlow(
+  {
+    name: 'helloFlow',
+    inputSchema: z.string(),
+    outputSchema: z.string(),
+  },
+  async (name) => {
+    return `Hello, ${name}!`;
+  }
+);
+
+// A flow that uses a Dotprompt file and Zod schemas.
+export const menuSuggestionFlow = defineFlow(
+  {
+    name: 'menuSuggestionFlow',
+    inputSchema: MenuSuggestionRequestSchema,
+    outputSchema: MenuSuggestionResponseSchema,
+  },
+  async (request) => {
+    const llmResponse = await menuSuggestion.generate({
+      input: {
+        theme: request.theme,
+      },
+    });
+
+    return llmResponse.output()!;
+  }
+);
+
+// A flow that calls another flow.
+export const composedMenuSuggestionFlow = defineFlow(
+  {
+    name: 'composedMenuSuggestionFlow',
+    inputSchema: MenuSuggestionRequestSchema,
+    outputSchema: z.string(),
+  },
+  async (request) => {
+    const suggestion = await menuSuggestionFlow.run(request);
+    const hello = await helloFlow.run('Genkit');
+    return `${hello} Here is your suggestion for a ${request.theme} restaurant: ${suggestion.itemName} - ${suggestion.description}`;
+  }
+);
+
+startFlowsServer();
+```
+
+## 5. Interaction Guidelines
 
 - Assume the user is familiar with TypeScript/JavaScript but may be new to Genkit.
 - When generating code, provide explanations for Genkit-specific concepts like flows, tools, and Dotprompt.
