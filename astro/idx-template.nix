@@ -22,6 +22,11 @@
     packageManager=${packageManager} tailwind=${if tailwind then "true" else "false"} j2 ${./devNix.j2} -o "$out"/.idx/dev.nix
     nixfmt "$out"/.idx/dev.nix
 
+    mkdir "$out/.idx"
+    chmod -R u+w "$out"
+    cp .idx/airules.md "$out/.idx"
+    cp gemini.md "$out"
+
     ${if packageManager == "npm" then "( cd \$out && npm i --package-lock-only --ignore-scripts )" else ""}
   '';
 }

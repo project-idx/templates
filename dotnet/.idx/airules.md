@@ -32,10 +32,90 @@ This is a .NET project, which could be a web application, a web API, a console a
 - **Unit Testing:** Write unit tests using a framework like xUnit, NUnit, or MSTest.
 - **Integration Testing:** Write integration tests for components that interact with external systems.
 
-## 4. Interaction Guidelines
+## 4. Blazor Web App Examples
+
+### Creating a Razor Component
+Create a new `.razor` file in the `Components` directory.
+
+**`Components/Counter.razor`**
+```csharp
+@page "/counter"
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}
+```
+
+### Data Binding
+Use the `@bind` attribute to bind an HTML element to a C# variable.
+
+```csharp
+<input @bind="textValue" />
+<p>@textValue</p>
+
+@code {
+    private string textValue = "Hello, Blazor!";
+}
+```
+
+### Injecting a Service
+Use the `@inject` directive to inject a service into a component.
+
+```csharp
+@inject NavigationManager NavigationManager
+
+<button @onclick="NavigateHome">Go Home</button>
+
+@code {
+    private void NavigateHome()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}
+```
+
+## 5. Minimal API Examples
+
+The web project uses the minimal API syntax. You can add new endpoints directly to the `Program.cs` file.
+
+### Adding a GET Endpoint
+```csharp
+app.MapGet("/hello", () => "Hello, Minimal API!");
+```
+
+### Adding a POST Endpoint
+```csharp
+app.MapPost("/products", (Product product) => {
+    // ... save the product ...
+    return Results.Created($"/products/{product.Id}", product);
+});
+
+public record Product(int Id, string Name);
+```
+
+### Route Parameters
+```csharp
+app.MapGet("/products/{id}", (int id) => {
+    // ... get product by id ...
+    return Results.Ok(new Product(id, "A great product"));
+});
+```
+
+## 6. Interaction Guidelines
 
 - Assume the user is familiar with C# and object-oriented programming but may be new to some .NET Core features.
 - When generating code, provide explanations for .NET-specific concepts like dependency injection, middleware, and the configuration system.
-- If a request is ambiguous, ask for clarification on the project type (e.g., web API, console app) and the desired functionality.
+- If a request is ambiguous, ask for clarification on the project type (e.g., Blazor, web API, console app) and the desired functionality.
 - When suggesting NuGet packages, explain their purpose and how to add them to the project.
 - Remind the user to run `dotnet restore` after modifying the project file.

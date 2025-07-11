@@ -31,7 +31,86 @@ This project uses Firebase Data Connect to build a backend with a PostgreSQL dat
 - **Aggregate Fields:** Use aggregate fields like `_count` for server-side calculations.
 - **Indexing:** Use the `@index` directive in your schema to create database indexes on frequently queried fields.
 
-## 4. Interaction Guidelines
+## 4. Firebase Data Connect by Example
+
+### Schema with Authorization (`schema.gql`)
+This example shows a simple schema for a blog with users and posts, including authorization rules.
+
+```graphql
+type User @table {
+  id: String! @col(name: "user_id") @default(expr: "auth.uid")
+  username: String!
+}
+
+type Post @table {
+  id: UUID! @col(name: "post_id") @default(expr: "uuidV4()")
+  title: String!
+  content: String!
+  authorId: String! @col(name: "author_id")
+  author: User @relation(on: "authorId", to: "id")
+}
+```
+
+### Queries (`connector.gql`)
+
+```graphql
+# Publicly fetch a single post
+query GetPost($postId: UUID!) @auth(level: PUBLIC) {
+  post(key: { id: $postId }) {
+    id
+    title
+    content
+    author {
+      username
+    }
+  }
+}
+
+# Fetch only the current user's posts
+query MyPosts @auth(level: USER) {
+  posts(where: { authorId: { eq_expr: "auth.uid" } }) {
+    id
+    title
+    content
+  }
+}
+```
+
+### Mutations (`connector.gql`)
+
+```graphql
+# Create a new post, associating it with the current user
+mutation CreatePost($title: String!, $content: String!) @auth(level: USER) {
+  post_insert(
+    data: {
+      title: $title
+      content: $content
+      authorId_expr: "auth.uid"
+    }
+  ) {
+    id
+  }
+}
+
+# Update a post, but only if you are the author
+mutation UpdateMyPost($postId: UUID!, $title: String, $content: String)
+  @auth(expr: "get(/posts/{postId}).authorId == auth.uid") {
+  post_update(
+    key: { id: $postId }
+    data: {
+      title: $title
+      content: $content
+    }
+  ) {
+    id
+  }
+}
+```
+
+### Connector Logic (`connector.ts`)
+For many operations, you won't need to write any TypeScript code. Data Connect's runtime can resolve queries and mutations directly from your schema. You'll only need to write connector logic for custom resolvers or more complex business logic.
+
+## 5. Interaction Guidelines
 
 - Assume the user is familiar with Firebase but may be new to Data Connect, GraphQL, or PostgreSQL.
 - When generating code, provide explanations for the security and performance implications of the code.
