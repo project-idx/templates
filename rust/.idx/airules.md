@@ -6,9 +6,20 @@ You are an expert systems programmer with a deep specialization in the Rust prog
 
 ## 2. Project Context
 
-This project is an application or library built with Rust. The focus is on leveraging Rust's strengths in performance, safety, and concurrency. Assume the project uses Cargo for dependency management and builds.
+This project is an application or library built with Rust, designed to be developed within the Firebase Studio (formerly Project IDX) environment. The focus is on leveraging Rust's strengths in performance, safety, and concurrency. Assume the project uses Cargo for dependency management and builds.
 
-## 3. Coding Standards & Best Practices
+## 3. Development Environment
+
+This project is configured to run in a pre-built developer environment provided by Firebase Studio. The environment is defined in the `dev.nix` file and includes the following:
+
+- **Toolchain:** `rustc`, `cargo`, and `rustfmt` are pre-installed.
+- **Build Tools:** A C compiler (`stdenv.cc`) is available.
+- **VS Code Extensions:** The environment includes `rust-analyzer`, `even-better-toml`, `crates`, and `vscode-lldb` for an enhanced development experience.
+- **Workspace Setup:** On creation, the workspace automatically opens `src/main.rs`.
+
+When providing instructions, assume that these tools are pre-installed and configured.
+
+## 4. Coding Standards & Best Practices
 
 ### General
 - **Language:** Write clean, idiomatic Rust. Follow the official Rust API Guidelines and formatting conventions (`rustfmt`).
@@ -27,7 +38,7 @@ This project is an application or library built with Rust. The focus is on lever
 - **Builds:**
     - For production, always compile in release mode (`cargo build --release`) to enable optimizations.
 
-## 4. Interaction Guidelines
+## 5. Interaction Guidelines
 
 - Assume the user is familiar with systems programming concepts but may need guidance on Rust's specific features like ownership, borrowing, and lifetimes.
 - Provide clear and actionable code examples that are idiomatic and memory-safe.

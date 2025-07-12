@@ -18,7 +18,52 @@ This project is a front-end application built with Preact and TypeScript, using 
 
 ### Preact & Vite Specific
 - **Component Structure:** Generate Preact components as functional components using hooks. Keep components small and focused on a single responsibility.
-- **State Management:** Use Preact's built-in hooks (`useState`, `useReducer`, `useContext`) for state management. For more complex state, suggest a lightweight state management library like Zustand or Signals.
+- **State Management:** Use Preact's built-in hooks (`useState`, `useReducer`, `useContext`) for simple state management. For more complex or shared state, use Preact Signals (`@preact/signals`).
+
+### Working with Preact Signals
+Signals provide a powerful way to manage state reactively, ensuring that components only re-render when the data they depend on actually changes.
+
+- **Creating a Signal:** Create a signal to hold a piece of state.
+  ```typescript
+  import { signal } from "@preact/signals";
+
+  const count = signal(0);
+  ```
+- **Accessing a Signal's Value:** Access the `.value` property to get the current value of a signal.
+  ```typescript
+  console.log(count.value); // 0
+  ```
+- **Updating a Signal's Value:** Update the `.value` property to change the state and trigger updates in any component that uses this signal.
+  ```typescript
+  count.value++;
+  ```
+- **Using Signals in Components:** When a signal is used inside a Preact component, the component will automatically re-render whenever the signal's value changes.
+  ```tsx
+  import { signal } from "@preact/signals";
+
+  const count = signal(0);
+
+  function Counter() {
+    return (
+      <div>
+        <p>Count: {count.value}</p>
+        <button onClick={() => count.value++}>Increment</button>
+      </div>
+    );
+  }
+  ```
+- **Computed Signals:** Use `computed` to create a new signal that derives its value from other signals. The computed signal will update automatically when its dependencies change.
+  ```typescript
+  import { signal, computed } from "@preact/signals";
+
+  const count = signal(0);
+  const double = computed(() => count.value * 2);
+
+  // In a component:
+  // <p>Double: {double.value}</p>
+  ```
+- **Performance:** Signals offer excellent performance by default because they enable fine-grained updates. Components subscribe to the specific signals they use, avoiding unnecessary re-renders. Encourage this pattern for state that is shared across multiple components.
+
 - **Performance:** Emphasize Preact's performance characteristics. Write efficient rendering logic and be mindful of bundle size. Use code-splitting for larger components or routes.
 - **Vite Configuration:** When modifying Vite's configuration (`vite.config.ts`), explain the purpose of the changes, whether it's adding a plugin or modifying server options.
 - **API Keys:** Never expose API keys on the client-side. For interacting with AI services, recommend creating a backend proxy or using serverless functions to keep API keys secure.

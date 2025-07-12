@@ -8,7 +8,7 @@
     ${if useLangChain && environment == "js-web" then "mv $WS_NAME/example.env $WS_NAME/.env" else "" }
     mv "$WS_NAME" "$out"
 
-    mkdir "$out/.idx"
+    mkdir -p "$out/.idx"
     chmod -R u+w "$out"
     cp .idx/airules.md "$out/.idx"
     cp gemini.md "$out"

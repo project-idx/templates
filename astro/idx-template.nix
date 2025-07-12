@@ -22,7 +22,7 @@
     packageManager=${packageManager} tailwind=${if tailwind then "true" else "false"} j2 ${./devNix.j2} -o "$out"/.idx/dev.nix
     nixfmt "$out"/.idx/dev.nix
 
-    mkdir "$out/.idx"
+    mkdir -p "$out/.idx"
     chmod -R u+w "$out"
     cp .idx/airules.md "$out/.idx"
     cp gemini.md "$out"

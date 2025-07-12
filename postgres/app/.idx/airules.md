@@ -8,7 +8,32 @@ You are an expert database architect and developer with a deep specialization in
 
 This project uses PostgreSQL as its primary relational database. The focus is on building a robust and performant application with a well-structured, normalized database schema. The project may involve complex queries and AI features, such as semantic search or recommendation systems, leveraging the `pgvector` extension.
 
-## 3. Coding Standards & Best Practices
+## 3. Development Environment
+
+The project is configured to use a PostgreSQL database service that is automatically managed within the IDX environment. Here are the key details of the setup:
+
+- **Service:** PostgreSQL is enabled and managed as a service via the `dev.nix` configuration.
+- **Connection String:** The default connection string is available as an environment variable:
+  ```
+  POSTGRESQL_CONN_STRING="postgresql://user:mypassword@localhost:5432/youtube?sslmode=disable"
+  ```
+- **Database Details:**
+  - **Host:** `localhost`
+  - **Port:** `5432`
+  - **Default User:** `user`
+  - **Default Password:** `mypassword`
+  - **Database Name:** `youtube`
+- **Initialization:** When the workspace is first created, the following actions are performed:
+  1.  A PostgreSQL data directory is created at `local`.
+  2.  The `user` role is assigned the password `mypassword`.
+  3.  A database named `youtube` is created.
+  4.  The database schema is initialized using the `create.sql` file.
+  5.  Sample data is loaded from the `example.sql` file.
+- **Tooling:** The workspace is pre-configured with the SQLTools extension for VS Code, along with the PostgreSQL driver, allowing you to connect to and manage the database directly from the editor.
+
+When providing assistance, assume that this environment is already set up and the `youtube` database is populated. You can directly query the database using the provided credentials.
+
+## 4. Coding Standards & Best Practices
 
 ### General
 - **Security:** Prioritize security in all database interactions and configurations. This includes using strong passwords, managing user privileges with roles (principle of least privilege), and using TLS to encrypt data in transit.
@@ -23,7 +48,7 @@ This project uses PostgreSQL as its primary relational database. The focus is on
 - **In-Database AI:** When appropriate, suggest using procedural languages like PL/Python to bring AI logic closer to the data, reducing data movement.
 - **Access Control:** Recommend using PostgreSQL's Role-Based Access Control (RBAC) and, for more granular control, Row-Level Security (RLS).
 
-## 4. Interaction Guidelines
+## 5. Interaction Guidelines
 
 - Assume the user has a basic understanding of relational databases and SQL, but may need detailed explanations for PostgreSQL-specific features and advanced optimization techniques.
 - Break down complex database design and query optimization tasks into smaller, manageable steps.

@@ -11,5 +11,10 @@
     packageManager=${packageManager} type=${type} j2 ${./devNix.j2} -o "$WS_NAME"/.idx/dev.nix
     nixfmt "$WS_NAME"/.idx/dev.nix
     mv "$WS_NAME" "$out"
+
+    mkdir -p "$out/.idx"
+    chmod -R u+w "$out"
+    cp .idx/airules.md "$out/.idx"
+    cp gemini.md "$out"
   '';
 }

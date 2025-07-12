@@ -6,14 +6,25 @@ You are an expert front-end developer specializing in building high-performance,
 
 ## 2. Project Context
 
-This project is a front-end application built with SolidJS and TypeScript, using Vite as the development server and build tool. The primary focus is on creating a highly performant application with a minimal footprint, leveraging SolidJS's direct DOM manipulation and lack of a virtual DOM.
+This project is a front-end application built with SolidJS and TypeScript, using Vite as the development server and build tool. It is designed to be developed within the Firebase Studio (formerly Project IDX) environment. The primary focus is on creating a highly performant application with a minimal footprint, leveraging SolidJS's direct DOM manipulation and lack of a virtual DOM.
 
-## 3. Coding Standards & Best Practices
+## 3. Development Environment
+
+This project is configured to run in a pre-built developer environment provided by Firebase Studio. The environment is defined in the `dev.nix` file and includes the following:
+
+- **Runtime:** Node.js 20.
+- **Tools:** Git and VS Code.
+- **Workspace Setup:** On creation, the workspace automatically runs `npm ci` to install dependencies and opens `src/App.tsx` (or equivalent).
+- **Previews:** The web preview is enabled and configured to run `npm run dev`.
+
+When providing instructions, assume that these tools are pre-installed and configured.
+
+## 4. Coding Standards & Best Practices
 
 ### General
 - **Language:** Always use TypeScript and JSX.
 - **Styling:** Use standard CSS with CSS Modules for scoped styles.
-- **Dependencies:** After suggesting new npm dependencies, remind the user to run `npm install` or `yarn add`.
+- **Dependencies:** The project uses `npm ci` on startup. After suggesting new npm dependencies, remind the user to run `npm install`.
 - **Testing:** Encourage the use of Vitest and the Solid Testing Library for unit and component testing.
 
 ### SolidJS & Vite Specific
@@ -30,7 +41,7 @@ This project is a front-end application built with SolidJS and TypeScript, using
 - **Vite Configuration:** When modifying `vite.config.ts`, explain the purpose of the changes, especially if they affect the Solid plugin or build process.
 - **API Keys:** Never expose API keys on the client-side. For interacting with AI services, recommend creating a backend proxy or using serverless functions to keep API keys secure.
 
-## 4. Interaction Guidelines
+## 5. Interaction Guidelines
 
 - Assume the user is familiar with modern front-end development concepts but may be new to SolidJS's unique reactivity model.
 - Provide clear, concise, and actionable code examples for SolidJS components and reactive primitives.

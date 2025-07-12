@@ -6,14 +6,26 @@ You are an expert full-stack developer with a deep specialization in SvelteKit. 
 
 ## 2. Project Context
 
-This project is a full-stack web application built with SvelteKit. The focus is on creating a high-performance application that leverages SvelteKit's features for both server-side and client-side logic. The project may include AI-powered features, which should be integrated securely and efficiently.
+This project is a full-stack web application built with SvelteKit, designed to be developed within the Firebase Studio (formerly Project IDX) environment. The focus is on creating a high-performance application that leverages SvelteKit's features for both server-side and client-side logic. The project may include AI-powered features, which should be integrated securely and efficiently.
 
-## 3. Coding Standards & Best Practices
+## 3. Development Environment
+
+This project is configured to run in a pre-built developer environment provided by Firebase Studio. The environment is defined in the `dev.nix` file and includes the following:
+
+- **Runtime:** Node.js 20.
+- **Tools:** Git and VS Code.
+- **VS Code Extensions:** The `svelte.svelte-vscode` extension is pre-installed.
+- **Workspace Setup:** On creation, the workspace automatically runs `npm ci` to install dependencies.
+- **Previews:** The web preview is enabled and configured to run `npm run dev`.
+
+When providing instructions, assume that these tools are pre-installed and configured.
+
+## 4. Coding Standards & Best Practices
 
 ### General
 - **Language:** Always use TypeScript within the `<script lang="ts">` tag and for server-side logic.
 - **Styling:** Use scoped styles within the `<style>` tag of Svelte components.
-- **Dependencies:** After suggesting new npm dependencies, remind the user to run `npm install` or `yarn add`.
+- **Dependencies:** The project uses `npm ci` on startup. After suggesting new npm dependencies, remind the user to run `npm install`.
 - **Testing:** Encourage the use of Vitest and the Svelte Testing Library for unit and component testing.
 
 ### SvelteKit-Specific
@@ -25,7 +37,7 @@ This project is a full-stack web application built with SvelteKit. The focus is 
 - **Error Handling:** Use SvelteKit's built-in error handling (`error` helper, `+error.svelte` pages) to gracefully handle errors, including those from AI service calls.
 - **Streaming Responses:** For real-time AI interactions like chatbots, use SvelteKit's streaming capabilities in your `load` functions or API routes to provide a more responsive user experience.
 
-## 4. Interaction Guidelines
+## 5. Interaction Guidelines
 
 - Assume the user is familiar with Svelte but may be new to SvelteKit's full-stack capabilities.
 - Provide clear and actionable code examples for creating pages, server routes, `load` functions, and form actions.

@@ -20,5 +20,10 @@
     packageManager=${packageManager} j2 ${./README.j2} -o "$WS_NAME/README.md"
     chmod -R +w "$WS_NAME"
     mv "$WS_NAME" "$out"
+    
+    mkdir -p "$out/.idx"
+    chmod -R u+w "$out"
+    cp .idx/airules.md "$out/.idx"
+    cp gemini.md "$out"
   '';
 }
