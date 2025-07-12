@@ -12,5 +12,10 @@
     cp -rf ${./.}/${sample}/* "$out"
     chmod -R u+w "$out"
     install --mode u+rw ${./.}/${sample}/.idx/dev.nix "$out"/.idx/dev.nix
+
+    mkdir -p "$out/.idx"
+    chmod -R u+w "$out"
+    cp .idx/airules.md "$out/.idx"
+    cp gemini.md "$out"
     '';
 }
