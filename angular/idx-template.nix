@@ -6,6 +6,12 @@
     mkdir "$WS_NAME"/.idx
     cp ${./dev.nix} "$WS_NAME"/.idx/dev.nix && chmod +w "$WS_NAME"/.idx/dev.nix
     mv "$WS_NAME" "$out"
+    
+    mkdir -p "$out/.idx"
+    chmod -R u+w "$out"
+    cp .idx/airules.md "$out/.idx"
+    cp gemini.md "$out"
+
     (cd "$out"; npm install --package-lock-only --ignore-scripts)
   '';
 }
