@@ -1,1 +1,0 @@
-.idx/airules.md

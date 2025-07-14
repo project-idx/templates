@@ -21,7 +21,7 @@
       chmod +w "$out"/.idx/dev.nix
       
       cp -r ${./.idx/airules.md} "$out/.idx"
-      cp gemini.md "$out"
+      
 
       cd "$out"; npm install --package-lock-only --ignore-scripts
     '';

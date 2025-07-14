@@ -22,7 +22,7 @@
 		chmod -R +w "$out"
 		
 		cp -r ${./.idx/airules.md} "$out/.idx"
-		cp gemini.md "$out"
+		
 
 		${
          if packageManager == "npm" then

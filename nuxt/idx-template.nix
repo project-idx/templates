@@ -45,7 +45,7 @@
       mkdir -p "$out/.idx"
       chmod -R u+w "$out"
       cp -r ${./.idx/airules.md} "$out/.idx"
-      cp gemini.md "$out"
+      
 
       ${if packageManager == "npm" then "( cd \$out && npm i --package-lock-only --ignore-scripts )" else ""}
     '';

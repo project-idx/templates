@@ -15,6 +15,6 @@
     mkdir -p "$out/.idx"
     chmod -R u+w "$out"
     cp -r ${./.idx/airules.md} "$out/.idx"
-    cp gemini.md "$out"
+    
   '';
 }
