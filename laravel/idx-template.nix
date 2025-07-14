@@ -15,7 +15,7 @@
   		cp ${./dev.nix} "$out"/.idx/dev.nix
 
       chmod -R u+w "$out"
-      cp .idx/airules.md "$out/.idx"
+      cp -r ${./.idx/airules.md} "$out/.idx"
       cp gemini.md "$out"
     '';
 }

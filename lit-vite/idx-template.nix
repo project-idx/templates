@@ -14,7 +14,7 @@
     chmod -R u+w "$out"
     mkdir -p "$out/.idx"
     cp -r ${./.idx/airules.md} "$out/.idx"
-    # cp ${./gemini.md} "$out"
+    cp -L ${./gemini.md} "$out"
     
     cd "$out"; npm install --package-lock-only --ignore-scripts
   '';

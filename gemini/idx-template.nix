@@ -10,7 +10,7 @@
 
     mkdir -p "$out/.idx"
     chmod -R u+w "$out"
-    cp .idx/airules.md "$out/.idx"
+    cp -r ${./.idx/airules.md} "$out/.idx"
     cp gemini.md "$out"
     
     ${if environment == "js-web" then "( cd \$out && npm i --package-lock-only --ignore-scripts )" else ""}
