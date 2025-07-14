@@ -7,7 +7,7 @@
 
     mkdir -p "$out/.idx"
     chmod -R u+w "$out"
-    cp -r ${./.idx/airules.md} "$out/.idx"
+    cp -r ${./.idx/airules.md} "$out/.idx/airules.md"
     
   '';
 }
