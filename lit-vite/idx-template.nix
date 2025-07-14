@@ -11,10 +11,10 @@
     chmod -R +w "$WS_NAME"
     mv "$WS_NAME" "$out"
 
-    mkdir -p "$out/.idx"
     chmod -R u+w "$out"
-    cp .idx/airules.md "$out/.idx"
-    cp gemini.md "$out"
+    mkdir -p "$out/.idx"
+    cp ./.idx/airules.md "$out/.idx"
+    cp ./gemini.md "$out"
     
     cd "$out"; npm install --package-lock-only --ignore-scripts
   '';
