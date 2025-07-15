@@ -22,7 +22,7 @@
 		chmod -R +w "$out"
 		
 		cp -rf ${./.idx/airules.md} "$out/.idx/airules.md"
-		cp -rf "$out/.idx/airules.md" "$out/gemini.md"
+		cp -rf "$out/.idx/airules.md" "$out/GEMINI.md"
 
 		${
          if packageManager == "npm" then
