@@ -20,8 +20,8 @@
       cp ${./dev.nix} "$out"/.idx/dev.nix
       chmod +w "$out"/.idx/dev.nix
       
-      cp -r ${./.idx/airules.md} "$out/.idx/airules.md"
-      
+      cp -rf ${./.idx/airules.md} "$out/.idx/airules.md"
+      ln -s "$out/.idx/airules.md" "$out/gemini.md"
 
       cd "$out"; npm install --package-lock-only --ignore-scripts
     '';
