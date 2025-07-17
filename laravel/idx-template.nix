@@ -13,7 +13,7 @@
       composer create-project laravel/laravel "$out"
 			mkdir -p "$out"/.idx
   		cp ${./dev.nix} "$out"/.idx/dev.nix
-
+      chmod -R u+w "$out"
       cp -rf ${./.idx/airules.md} "$out/.idx/airules.md"
       cp -rf "$out/.idx/airules.md" "$out/GEMINI.md"
       chmod -R u+w "$out"

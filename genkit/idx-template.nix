@@ -23,7 +23,6 @@ idx-template \
     chmod -R u+w "$out"
     cp ${./.idx/airules.md} "$out/.idx/airules.md"
     cp ${./.idx/airules.md} "$out/GEMINI.md"
-    
     chmod -R u+w "$out"
     
   '';

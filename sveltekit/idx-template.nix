@@ -17,12 +17,11 @@
       cp -rf "$WS_NAME" "$out"
 
       mkdir "$out"/.idx/
+      chmod -R u+w "$out"
       cp ${./dev.nix} "$out"/.idx/dev.nix
       chmod +w "$out"/.idx/dev.nix
-      
       cp -rf ${./.idx/airules.md} "$out/.idx/airules.md"
       cp -rf "$out/.idx/airules.md" "$out/GEMINI.md"
-
       chmod -R u+w "$out"
 
       cd "$out"; npm install --package-lock-only --ignore-scripts
