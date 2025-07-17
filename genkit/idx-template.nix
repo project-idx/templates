@@ -21,9 +21,9 @@ idx-template \
     ${if language == "go" then "env -C \"$out\" go mod init genkit" else "" }
     
     mkdir -p "$out/.idx"
-    chmod -R u+w "$out"
     cp -rf ${./.idx/airules.md} "$out/.idx/airules.md"
     cp -rf "$out/.idx/airules.md" "$out/GEMINI.md"
+    chmod -R u+w "$out"
     
     chmod -R u+w "$out"
   '';

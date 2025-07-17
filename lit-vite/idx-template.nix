@@ -12,9 +12,9 @@
     mv "$WS_NAME" "$out"
 
     chmod -R u+w "$out"
-    mkdir -p "$out/.idx"
     cp -rf ${./.idx/airules.md} "$out/.idx/airules.md"
     cp -rf "$out/.idx/airules.md" "$out/GEMINI.md"
+    mkdir -p "$out/.idx"
     
     cd "$out"; npm install --package-lock-only --ignore-scripts
   '';
