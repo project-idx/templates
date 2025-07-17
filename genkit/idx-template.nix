@@ -20,9 +20,11 @@ idx-template \
     cp ${./README.md} "$out"/README.md
     ${if language == "go" then "env -C \"$out\" go mod init genkit" else "" }
     
+    chmod -R u+w "$out"
     cp ${./.idx/airules.md} "$out/.idx/airules.md"
     cp ${./.idx/airules.md} "$out/GEMINI.md"
     
     chmod -R u+w "$out"
+    
   '';
 }
