@@ -1,8 +1,10 @@
 {
   "name": "Gemini API",
   "description": "Start a simple generative AI app with the Gemini API",
-  "categories": ["AI & ML"],
-  "icon": "https://www.gstatic.com/monospace/231128/logo_gemini_512.png",
+  "categories": [
+    "AI & ML"
+  ],
+  "icon": "https://www.gstatic.com/images/branding/productlogos/gemini_2025_blue/v1/192px.svg",
   "publisher": "Google LLC",
   "params": [
     {
