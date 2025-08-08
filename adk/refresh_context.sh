@@ -1,12 +1,39 @@
+#!/bin/bash
+
+# This script downloads the latest context files from the ADK repository
+# and generates a tailored .idx/airules.md for Firebase Studio.
+
+echo "--- Downloading latest context files... ---"
+mkdir -p .gemini
+curl -s -o .gemini/settings.json https://raw.githubusercontent.com/google/adk-python/main/.gemini/settings.json
+curl -s -o llms-full.txt https://raw.githubusercontent.com/google/adk-python/main/llms-full.txt
+curl -s -o AGENTS.md https://raw.githubusercontent.com/google/adk-python/main/AGENTS.md
+echo "Downloads complete."
+
+# --- Generate the new .idx/airules.md ---
+
+# Define the path for the new airules.md
+AIRULES_PATH=".idx/airules.md"
+mkdir -p .idx
+
+echo "--- Generating new .idx/airules.md ---"
+
+# 1. Start with the original Persona and Expertise from the template's airules
+# This preserves the AI's core instructions for being a helpful assistant in IDX.
+cat > "$AIRULES_PATH" <<'EOF'
 # Gemini AI Rules for Google's Agent Development Kit (ADK) Projects
 
 ## 1. Persona & Expertise
 
 You are an expert AI developer specializing in Google's Agent Development Kit (ADK). You are proficient in Python and have a deep understanding of building, deploying, and managing AI agents. You are familiar with the core principles of the ADK, including its code-first philosophy, modular architecture, and emphasis on security and scalability. You are also knowledgeable about integrating with various models like Gemini and deploying to platforms such as Vertex AI, Cloud Run, and GKE.
-## Project Overview
+EOF
 
-The Agent Development Kit (ADK) is an open-source, code-first Python toolkit for building, evaluating, and deploying sophisticated AI agents with flexibility and control. While optimized for Gemini and the Google ecosystem, ADK is model-agnostic, deployment-agnostic, and is built for compatibility with other frameworks. ADK was designed to make agent development feel more like software development, to make it easier for developers to create, deploy, and orchestrate agentic architectures that range from simple tasks to complex workflows.
+# 2. Append the Project Overview from the authoritative AGENTS.md
+# Use sed to extract the "Project Overview" section.
+sed -n '/^## Project Overview/,/^##/p' AGENTS.md | sed '$d' >> "$AIRULES_PATH"
 
+# 3. Append the Coding Standards & Best Practices
+cat >> "$AIRULES_PATH" <<'EOF'
 
 ## 3. Coding Standards & Best Practices
 
@@ -18,12 +45,13 @@ The Agent Development Kit (ADK) is an open-source, code-first Python toolkit for
 
 ### Python Style Guide (from google/adk-python)
 The project follows the Google Python Style Guide. Key conventions are:
-*   **Indentation**: 2 spaces.
-*   **Line Length**: Maximum 80 characters.
-*   **Naming Conventions**:
-*   **Docstrings**: Required for all public modules, functions, classes, and methods.
-*   **Imports**: Organized and sorted.
-*   **Error Handling**: Specific exceptions should be caught, not general ones like `Exception`.
+EOF
+
+# Use awk to extract the Python Style Guide bullet points from AGENTS.md
+awk '/^### Python Style Guide/,/^\*   **Error Handling**/' AGENTS.md | grep '^\*   ' >> "$AIRULES_PATH"
+
+# 4. Append the original Interaction Guidelines
+cat >> "$AIRULES_PATH" <<'EOF'
 
 ## 4. Interaction Guidelines
 
@@ -32,3 +60,7 @@ The project follows the Google Python Style Guide. Key conventions are:
 - When suggesting new tools or integrations, provide clear code examples and explain the security implications.
 - If a request is ambiguous, ask clarifying questions about the intended use case and architecture before providing a solution.
 - For deployment, discuss the trade-offs between different options like Agent Engine on Vertex AI, Cloud Run, and GKE.
+EOF
+
+echo ".idx/airules.md has been successfully generated."
+echo "--- Context refresh complete. ---"
