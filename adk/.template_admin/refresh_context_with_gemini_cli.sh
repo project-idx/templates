@@ -42,7 +42,7 @@ Follow these instructions precisely:
 # --- Execute the Gemini CLI command ---
 # The --context flag provides both files to the model.
 # Output is redirected to a new file.
-gemini "$PROMPT" --context "$AIRULES_PATH,AGENTS.md" > "$AIRULES_NEW_PATH"
+gemini "$PROMPT" --context "$AIRULES_PATH,.template_admin/AGENTS.md" > "$AIRULES_NEW_PATH"
 
 # Check if the new file was created and has content
 if [ -s "$AIRULES_NEW_PATH" ]; then
