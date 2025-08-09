@@ -3,16 +3,25 @@
 # This script downloads the latest context files from the ADK repository
 # and uses the Gemini CLI to update the .idx/airules.md file.
 # This is an EXPERIMENTAL alternative to the sed/awk-based script.
+#
+# Get the directory of the script itself
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+cd "$SCRIPT_DIR/.." # Change to the parent adk/ directory
+
+AIRULES_PATH=".idx/airules.md"
+GEMINI_SETTINGS_PATH=".gemini/settings.json"
+LLMS_TXT_PATH="llms-full.txt"
+AGENTS_PATH="AGENTS.md"
 
 echo "--- Downloading latest context files... ---"
 mkdir -p .gemini
-curl -s -o .gemini/settings.json https://raw.githubusercontent.com/google/adk-python/main/.gemini/settings.json
-curl -s -o llms-full.txt https://raw.githubusercontent.com/google/adk-python/main/llms-full.txt
-curl -s -o AGENTS.md https://raw.githubusercontent.com/google/adk-python/main/AGENTS.md
+curl -s -o $GEMINI_SETTINGS_PATH https://raw.githubusercontent.com/google/adk-python/main/.gemini/settings.json
+curl -s -o $LLMS_TXT_PATH https://raw.githubusercontent.com/google/adk-python/main/llms-full.txt
+curl -s -o $AGENTS_PATH https://raw.githubusercontent.com/google/adk-python/main/AGENTS.md
 echo "Downloads complete."
 
-# --- Define file paths ---
-AIRULES_PATH=".idx/airules.md"
+# --- Define temp file paths ---
 AIRULES_NEW_PATH=".idx/airules.md.new"
 
 if [ ! -f "$AIRULES_PATH" ]; then
@@ -25,24 +34,21 @@ echo "--- Updating .idx/airules.md using Gemini CLI... ---"
 # --- The Gemini CLI Prompt ---
 # This prompt instructs the model to act like a precise file-updating tool.
 # It's told to only replace specific sections and preserve everything else.
-PROMPT="You are a script that updates one file based on another. Your task is to update the file '$AIRULES_PATH' using content from 'AGENTS.md'.
-
-The target audience for '$AIRULES_PATH' is an AI assistant. The goal is to give it a clear persona and the most relevant, high-level context for helping a developer who is *using* the ADK, not contributing to it.
+PROMPT="You are a script that updates one file based on another. The input you receive contains two files concatenated together: first '$AIRULES_PATH', then 'AGENTS.md'. Your task is to use the content from 'AGENTS.md' to update the content of '$AIRULES_PATH'.
 
 Follow these instructions precisely:
-1.  In the file '$AIRULES_PATH', locate the section that starts with '## Project Overview'.
-2.  Replace the entire content of that section with the content of the '## Project Overview' section from the file 'AGENTS.md'.
-3.  In the file '$AIRULES_PATH', locate the section that starts with '### Python Style Guide'.
-4.  Replace the entire content of that section with the content of the '### Python Style Guide' section from 'AGENTS.md'.
-5.  Preserve ALL other content and formatting in '$AIRULES_PATH' exactly as it is. Do not add, remove, or rephrase any other text.
+1.  Identify the content of the '## Project Overview' section from the 'AGENTS.md' part of the input.
+2.  Replace the content of the '## Project Overview' section in the '$AIRULES_PATH' part of the input with what you just identified.
+3.  Identify the content of the '### Python Style Guide' section from the 'AGENTS.md' part of the input.
+4.  Replace the content of the '### Python Style Guide' section in the '$AIRULES_PATH' part of the input with what you just identified.
+5.  Preserve ALL other content and formatting from the original '$AIRULES_PATH' part of the input exactly as it is.
 6.  If there are new sections in AGENTS.md that would be highly relevant to a developer *using* the ADK (not contributing to it), you may cautiously add them. Otherwise, do not add new sections.
 7.  Your goal is to make the minimum number of changes necessary. Only add, edit, or remove content in the target sections if the corresponding source content in 'AGENTS.md' has changed. Do not rephrase or 'improve' content that is unchanged.
 8.  Output only the full, updated content of the '$AIRULES_PATH' file."
 
 # --- Execute the Gemini CLI command ---
-# The --context flag provides both files to the model.
-# Output is redirected to a new file.
-gemini "$PROMPT" --context "$AIRULES_PATH,.template_admin/AGENTS.md" > "$AIRULES_NEW_PATH"
+# We concatenate the two files and pipe them to the Gemini CLI's standard input.
+cat "$AIRULES_PATH" "$AGENTS_PATH" | gemini -p "$PROMPT" > "$AIRULES_NEW_PATH"
 
 # Check if the new file was created and has content
 if [ -s "$AIRULES_NEW_PATH" ]; then

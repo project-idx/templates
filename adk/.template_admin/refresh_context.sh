@@ -8,17 +8,19 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 cd "$SCRIPT_DIR/.." # Change to the parent adk/ directory
 
+AIRULES_PATH=".idx/airules.md"
+GEMINI_SETTINGS_PATH=".gemini/settings.json"
+LLMS_TXT_PATH="llms-full.txt"
+AGENTS_PATH="AGENTS.md"
+
 echo "--- Downloading latest context files... ---"
 mkdir -p .gemini
-curl -s -o .gemini/settings.json https://raw.githubusercontent.com/google/adk-python/main/.gemini/settings.json
-curl -s -o llms-full.txt https://raw.githubusercontent.com/google/adk-python/main/llms-full.txt
-curl -s -o .template_admin/AGENTS.md https://raw.githubusercontent.com/google/adk-python/main/AGENTS.md
+curl -s -o $GEMINI_SETTINGS_PATH https://raw.githubusercontent.com/google/adk-python/main/.gemini/settings.json
+curl -s -o $LLMS_TXT_PATH https://raw.githubusercontent.com/google/adk-python/main/llms-full.txt
+curl -s -o $AGENTS_PATH https://raw.githubusercontent.com/google/adk-python/main/AGENTS.md
 echo "Downloads complete."
 
 # --- Update the .idx/airules.md file in-place ---
-
-AIRULES_PATH=".idx/airules.md"
-AGENTS_PATH=".template_admin/AGENTS.md"
 
 if [ ! -f "$AIRULES_PATH" ]; then
     echo "ERROR: $AIRULES_PATH not found. Please ensure the file exists." >&2
