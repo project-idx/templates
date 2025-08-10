@@ -12,8 +12,8 @@
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
-      "ms-toolsai.jupyter"
       "ms-python.python"
+      "ms-toolsai.jupyter"
       "mikoz.black-py"
       "krish-r.vscode-toggle-terminal"
       "Google.geminicodeassist"
@@ -51,7 +51,7 @@
       enable = true;
       previews = {
         web = {
-          command = [ "devserver.sh" ];
+          command = [ "./devserver.sh" ];
           manager = "web";
           env = {
             PORT = "$PORT";
