@@ -11,17 +11,27 @@
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
-        install =
-          "python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt";
+        install = "python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt";
+        samples = "git clone https://github.com/google/adk-samples";
+        web = "source .venv/bin/activate && adk web --port=$PORT --host=0.0.0.0 .";
         # Open editors for the following files by default, if they exist:
-        default.openFiles = [ "README.md", "./multi_tool_agent/agent.py" ];
+        default.openFiles = [
+          "README.md"
+          "./multi_tool_agent/.env.local"
+          "./multi_tool_agent/agent.py"
+        ];
       };
       # Runs each time the workspace is (re)started
       onStart = {
-        install =
-          "python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt";
+        install = "python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt";
+        samples = "git clone https://github.com/google/adk-samples";
+        web = "source .venv/bin/activate && adk web --port=$PORT --host=0.0.0.0 .";
         # Open editors for the following files by default, if they exist:
-        default.openFiles = [ "README.md", ".env.local", "./multi_tool_agent/agent.py" ];
+        default.openFiles = [
+          "README.md"
+          "./multi_tool_agent/.env.local"
+          "./multi_tool_agent/agent.py"
+        ];
       };
     };
     # Enable previews and customize configuration
@@ -29,7 +39,7 @@
       enable = true;
       previews = {
         web = {
-          command = [ "./devserver.sh" ];
+          command = [ "source .venv/bin/activate && adk web --port=$PORT --host=0.0.0.0 ." ]
           env = { PORT = "$PORT"; };
           manager = "web";
         };
