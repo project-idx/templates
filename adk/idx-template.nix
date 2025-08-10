@@ -20,5 +20,6 @@
     cp -f ${./.idx/airules.md} "$out/GEMINI.md"
     cp -f ${./AGENTS.md} "$out/AGENTS.md"
     chmod -R u+w "$out"
+    chmod -R u+x "$out/devserver.sh"
   '';
 }

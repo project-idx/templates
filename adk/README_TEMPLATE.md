@@ -13,35 +13,51 @@ This template supports both Python and Java for ADK development.
 
 ### Python
 
-1.  **Environment Setup:**
+We have automated a lot of the dev setup for python.
 
-    This template comes with a pre-configured Python environment. To activate it, open a new terminal and run:
+We will start with a single `multi_tool_agent` sample agent, and show you how to use all the `adk-samples`.
 
-    ```bash
-    source .venv/bin/activate
-    ```
+1. You must configure your access to Gemini for the sample agent.
 
-2.  **Set API Key:**
+Edit the `multi_tool_agent/.env.local` file.
 
-    Open the `.env.local` file and replace `PASTE_YOUR_ACTUAL_API_KEY_HERE` with your Gemini API key. You can get a key from [Google AI Studio](https://g.co/ai/idxGetGeminiKey).
+Replace `PASTE_YOUR_ACTUAL_API_KEY_HERE` with your Gemini API key. You can get a key from [Google AI Studio](https://g.co/ai/idxGetGeminiKey).
 
-3.  **Run the Agent:**
+Environment variables are set for each agent independently, so you may have to copy this file into new agent folders.
 
-    You can run the agent in two ways:
+```bash
+# multi_tool_agent/.env.local
+# Use Google AI Studio API
+GOOGLE_GENAI_USE_VERTEXAI=FALSE
+GOOGLE_API_KEY=PASTE_YOUR_ACTUAL_API_KEY_HERE
 
-    *   **Terminal:**
+# Or use Google Cloud Vertex AI API
+# GOOGLE_GENAI_USE_VERTEXAI=TRUE
+# GOOGLE_CLOUD_PROJECT="YOUR_PROJECT_NAME"
+# GOOGLE_CLOUD_LOCATION="us-central1"
+```
 
-        ```bash
-        adk run multi_tool_agent
-        ```
+2. Run the local `adk web` as a preview.
 
-    *   **Web UI:**
+```bash
+./devserver.sh
+```
 
-        ```bash
-        adk web multi_tool_agent
-        ```
+This will start a web server with an interactive UI for testing your agent.
 
-        This will start a web server with an interactive UI for testing your agent.
+Or you can do this manually:
+
+```bash
+source .venv/bin/activate
+adk web multi_tool_agent
+```
+
+You can also run as a command line execution instead of a web interface:
+
+```bash
+source .venv/bin/activate
+adk run multi_tool_agent
+```
 
 ### Java
 
