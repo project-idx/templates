@@ -11,7 +11,6 @@
     cp -r ${./.gemini}/. "$out/.gemini"
     cp -r ${./multi_tool_agent}/. "$out/multi_tool_agent"
     cp -f ${./multi_tool_agent}/.env.local "$out/multi_tool_agent/.env.local"
-    link -s "$out/multi_tool_agent/.env.local" "$out/.env.local"
     cp -f ${./.gitignore} "$out/.gitignore"
     cp -f ${./requirements.txt} "$out/requirements.txt"
     cp -f ${./llms-full.txt} "$out/llms-full.txt"
