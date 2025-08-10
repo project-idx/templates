@@ -6,8 +6,6 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.uv
-    pkgs.gnumake
-    pkgs.terraform
     pkgs.gh
     pkgs.python3
   ];
@@ -19,14 +17,16 @@
       "mikoz.black-py"
       "krish-r.vscode-toggle-terminal"
       "Google.geminicodeassist"
-      "googlecloudtools.cloudcode"
     ];
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
       onCreate = {
-        samples = "git clone https://github.com/google/adk-samples";
-        setup = "python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt && bash devserver.sh";
-        # Open editors for the following files by default, if they exist:
+        create-venv = ''
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install -r requirements.txt
+          git clone https://github.com/google/adk-samples
+        '';
         default.openFiles = [
           "README.md"
           "./multi_tool_agent/.env.local"
@@ -35,8 +35,10 @@
       };
       # Runs each time the workspace is (re)started
       onStart = {
-        setup = "python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt && bash devserver.sh";
-        # Open editors for the following files by default, if they exist:
+        web = ''
+          source .venv/bin/activate
+          bash devserver.sh
+        '';
         default.openFiles = [
           "README.md"
           "./multi_tool_agent/.env.local"

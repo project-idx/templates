@@ -37,7 +37,7 @@ You can connect to Google's AI services using either a simple API key or by auth
     gcloud auth login --update-adc --brief --quiet
     gcloud config set project $GOOGLE_CLOUD_PROJECT
     ```
-3.  Open the `multi_tool_agent/.env.local` file and modify it to use Vertex AI. Uncomment the relevant lines:
+3.  Open the `multi_tool_agent/.env.local` file and modify it to use Vertex AI. The file should look like this:
     ```bash
     # multi_tool_agent/.env.local
     # Use Google Cloud Vertex AI API
@@ -75,7 +75,13 @@ adk run multi_tool_agent
 *   Explore the included `multi_tool_agent` to understand how a basic agent is structured.
 *   Copy and rename the `multi_tool_agent` directory to create new agents.
 *   Check out the official [ADK Samples](https://github.com/google/adk-samples) for more advanced examples.
+    ```bash
+    cp -rf adk-samples/python/agents/* .
+    ```
 *   For a robust CI/CD environment, consider using the [Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack/).
+    ```bash
+    uvx agent-starter-pack create my-new-emails
+    ```
 
 ---
 
