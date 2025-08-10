@@ -1,100 +1,97 @@
 # Agent Development Kit (ADK) Template
 
-Using the ADK in Firebase Studio requires setting the proper environment variables and folder structure.
+This template provides a starting point for building AI agents with the Agent Development Kit (ADK) in Firebase Studio. It includes a sample Python agent and a pre-configured environment.
 
 ## Requirements
 
-1. Set environment variables so your agents can access the proper LLM and services.
-2. Use a folder structure supported by `adk web`.
+1.  An active Google Cloud project with the Vertex AI API enabled.
+2.  A configured authentication method to access Google Cloud services (see below).
 
-## Getting Started
+## Getting Started with Python
 
-This template supports both Python and Java for ADK development.
+This template is optimized for a fast Python development experience.
 
-### Python
+### 1. Configure Authentication
 
-We have automated a lot of the dev setup for python.
+You can connect to Google's AI services using either a simple API key or by authenticating with your Google Cloud account.
 
-We will start with a single `multi_tool_agent` sample agent, and show you how to use all the `adk-samples`.
+**Option 1: Use an API Key (Easiest)**
 
-1. You must configure your access to Gemini for the sample agent.
+1.  Get your Gemini API key from [Google AI Studio](https://g.co/ai/idxGetGeminiKey).
+2.  Open the `multi_tool_agent/.env.local` file.
+3.  Replace `PASTE_YOUR_ACTUAL_API_KEY_HERE` with your key. The file should look like this:
 
-Edit the `multi_tool_agent/.env.local` file.
+    ```bash
+    # multi_tool_agent/.env.local
+    # Use Google AI Studio API
+    GOOGLE_GENAI_USE_VERTEXAI=FALSE
+    GOOGLE_API_KEY=PASTE_YOUR_ACTUAL_API_KEY_HERE
+    ```
 
-Replace `PASTE_YOUR_ACTUAL_API_KEY_HERE` with your Gemini API key. You can get a key from [Google AI Studio](https://g.co/ai/idxGetGeminiKey).
+**Option 2: Use Your Google Cloud Account (More Powerful)**
 
-Environment variables are set for each agent independently, so you may have to copy this file into new agent folders.
+1.  Open a terminal in Firebase Studio.
+2.  Log in to Google Cloud and set your project:
+    ```bash
+    export GOOGLE_CLOUD_PROJECT="your-gcp-project-id"
+    gcloud auth login --update-adc --brief --quiet
+    gcloud config set project $GOOGLE_CLOUD_PROJECT
+    ```
+3.  Open the `multi_tool_agent/.env.local` file and modify it to use Vertex AI. Uncomment the relevant lines:
+    ```bash
+    # multi_tool_agent/.env.local
+    # Use Google Cloud Vertex AI API
+    GOOGLE_GENAI_USE_VERTEXAI=TRUE
+    GOOGLE_CLOUD_PROJECT="your-gcp-project-id"
+    GOOGLE_CLOUD_LOCATION="us-central1"
+    ```
 
-```bash
-# multi_tool_agent/.env.local
-# Use Google AI Studio API
-GOOGLE_GENAI_USE_VERTEXAI=FALSE
-GOOGLE_API_KEY=PASTE_YOUR_ACTUAL_API_KEY_HERE
+> **Note:** Environment variables are loaded per-agent. If you create a new agent, you will need to provide it with its own `.env.local` file.
 
-# Or use Google Cloud Vertex AI API
-# GOOGLE_GENAI_USE_VERTEXAI=TRUE
-# GOOGLE_CLOUD_PROJECT="YOUR_PROJECT_NAME"
-# GOOGLE_CLOUD_LOCATION="us-central1"
-```
+### 2. Run the Agent
 
-2. Run the local `adk web` as a preview.
+This template includes a `devserver.sh` script that activates the environment and starts the ADK web server, which you can access in the Previews panel.
+
+To start the server, run the following command in the terminal:
 
 ```bash
 ./devserver.sh
 ```
 
-This will start a web server with an interactive UI for testing your agent.
-
-Or you can do this manually:
+Alternatively, you can run the `adk` commands manually:
 
 ```bash
+# To run the interactive web UI
 source .venv/bin/activate
 adk web multi_tool_agent
-```
 
-You can also run as a command line execution instead of a web interface:
-
-```bash
+# To run the command-line interface
 source .venv/bin/activate
 adk run multi_tool_agent
 ```
 
-### Java
+### 3. Next Steps
 
-This template is primarily set up for Python. To use Java, you will need to:
+*   Explore the included `multi_tool_agent` to understand how a basic agent is structured.
+*   Copy and rename the `multi_tool_agent` directory to create new agents.
+*   Check out the official [ADK Samples](https://github.com/google/adk-samples) for more advanced examples.
+*   For a robust CI/CD environment, consider using the [Agent Starter Pack](https://github.com/GoogleCloudPlatform/agent-starter-pack/).
 
-1.  **Install a Java Development Kit (JDK):** Version 17 or higher is recommended.
-2.  **Set up a build tool:** Use Maven or Gradle to manage your dependencies.
-3.  **Add ADK dependencies:** Add the `google-adk` and `google-adk-dev` dependencies to your `pom.xml` or `build.gradle` file.
-4.  **Create your agent:** Write your agent logic in a Java file.
-5.  **Run the agent:** Use the ADK web server to run and test your agent.
+---
 
-For a detailed guide on getting started with the ADK for Java, please see the [official documentation](https://google.github.io/adk-docs/get-started/quickstart-java/).
+## Java Development
 
-## Key Concepts
+This template is primarily set up for Python. For a detailed guide on getting started with the ADK for Java, please see the [official documentation](https://google.github.io/adk-docs/get-started/quickstart-java/).
+
+## Key ADK Concepts
 
 *   **Agents:** The fundamental building blocks of the ADK. Agents are autonomous entities that can perceive their environment, make decisions, and take actions to achieve their goals.
 *   **Tools:** Functions that agents can use to interact with the outside world. Tools can be used to access APIs, databases, or any other external service.
-*   **Sessions:** A mechanism for managing the state of an agent and for storing information in long-term memory. This allows agents to learn from their experiences and to maintain context across multiple interactions.
+*   **Sessions:** A mechanism for managing the state of an agent and for storing information in long-term memory.
 *   **Multi-agent Systems:** The ADK supports the creation of multi-agent systems, where multiple agents can collaborate to solve complex problems.
-
-## Development and Testing
-
-*   **`adk run`:** Run your agent directly in the terminal for quick, interactive testing.
-*   **`adk web`:** Use the web-based UI for a more interactive testing and debugging experience.
-*   **Evaluation:** The ADK provides a framework for evaluating your agents to ensure they are behaving as expected. See the [official documentation](https://google.github.io/adk-docs/evaluation/overview/) for more details.
-
-## Security
-
-*   **Least Privilege:** Agents should only be given the permissions and access they absolutely need.
-*   **Input Validation and Output Sanitization:** Always validate and sanitize inputs and outputs to and from the LLM and tools.
-*   **Secure Tool Design:** Write your tools defensively and prefer smaller, single-purpose tools.
-*   **Sandboxed Code Execution:** The `BuiltInCodeExecutor` runs code in a restricted environment to mitigate risks.
 
 ## Resources
 
-*   **Official Documentation:** [https://google.github.io/adk-docs/](https://google.github.io/adk-docs/)
-*   **ADK for Python GitHub Repository:** [https://github.com/google/adk-python](https://github.com/google/adk-python)
-*   **ADK for Java GitHub Repository:** [https://github.com/google/adk-java](https://github.com/google/adk-java)
-*   **ADK Samples:** [https://github.com/google/adk-samples](https://github.com/google/adk-samples)
-*   **[ADK Videos](https://www.youtube.com/playlist?list=PLOU2XLYxmsIIAPgM8FmtEcFTXLLzmh4DK)**
+*   **ADK Documentation:** [https://google.github.io/adk-docs/](https://google.github.io/adk-docs/)
+*   **ADK Videos:** [https://www.youtube.com/playlist?list=PLOU2XLYxmsIIAPgM8FmtEcFTXLLzmh4DK](https://www.youtube.com/playlist?list=PLOU2XLYxmsIIAPgM8FmtEcFTXLLzmh4DK)
+*   **ADK on GitHub:** [Python](https://github.com/google/adk-python) | [Java](https://github.com/google/adk-java) | [Samples](https://github.com/google/adk-samples)
