@@ -13,6 +13,7 @@
     cp -f ${./multi_tool_agent}/.env.local "$out/multi_tool_agent/.env.local"
     cp -f ${./.gitignore} "$out/.gitignore"
     cp -f ${./requirements.txt} "$out/requirements.txt"
+    cp -f ${./devserver.sh} "$out/devserver.sh"
     cp -f ${./llms-full.txt} "$out/llms-full.txt"
     cp -f ${./README_TEMPLATE.md} "$out"/README.md
     cp -f ${./.idx/airules.md} "$out/.idx/airules.md"

@@ -13,7 +13,7 @@
       onCreate = {
         install = "python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt";
         samples = "git clone https://github.com/google/adk-samples";
-        web = "source .venv/bin/activate && adk web --port=$PORT --host=0.0.0.0 .";
+        web = "devserver.sh";
         # Open editors for the following files by default, if they exist:
         default.openFiles = [
           "README.md"
@@ -25,7 +25,7 @@
       onStart = {
         install = "python -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt";
         samples = "git clone https://github.com/google/adk-samples";
-        web = "source .venv/bin/activate && adk web --port=$PORT --host=0.0.0.0 .";
+        web = "devserver.sh";
         # Open editors for the following files by default, if they exist:
         default.openFiles = [
           "README.md"
@@ -39,8 +39,7 @@
       enable = true;
       previews = {
         web = {
-          command = [ "source .venv/bin/activate && adk web --port=$PORT --host=0.0.0.0 ." ];
-          cwd = ".";
+          command = [ "devserver.sh" ];
           manager = "web";
           env = {
             PORT = "$PORT";
