@@ -39,9 +39,13 @@
       enable = true;
       previews = {
         web = {
-          command = [ "source .venv/bin/activate && adk web --port=$PORT --host=0.0.0.0 ." ]
-          env = { PORT = "$PORT"; };
+          command = [ "source .venv/bin/activate && adk web --port=$PORT --host=0.0.0.0 ." ];
+          cwd = ".";
           manager = "web";
+          env = {
+            PORT = "$PORT";
+            FIREBASE_STUDIO = "1";
+          };
         };
       };
     };
