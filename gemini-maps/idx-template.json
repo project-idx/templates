@@ -6,5 +6,14 @@
   ],
   "icon": "https://www.gstatic.com/images/branding/productlogos/gemini_2025_blue/v1/192px.svg",
   "publisher": "Google LLC",
-  "params": []
+  "params": [],
+  "mcpServers": {
+    "google-maps-platform-code-assist": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@googlemaps/code-assist-mcp"
+      ]
+    }
+  }
 }
