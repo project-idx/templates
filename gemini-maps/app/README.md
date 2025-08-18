@@ -27,6 +27,10 @@ In order for the Maps JavaScript API features to work, you'll need to add a Goog
 6. In the file, add the line: VITE_MAPS_API_KEY=YOUR_API_KEY.
 7. Replace YOUR_API_KEY with the API key you got in step 4.
 
+## Google Maps Platform Code Assist MCP
+
+This template comes pre-configured with the [Google Maps Platform Code Assist MCP](https://github.com/googlemaps/platform-ai/tree/main/packages/code-assist) server. This tool makes your Gemini AI assistant in Firebase Studio an expert on Google Maps Platform, allowing it to generate code and answer questions based on the latest official documentation and code samples.
+
 ## Features
 
 Most of the code powering the features of this sample are in the `src/main.ts` file.

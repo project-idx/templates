@@ -1,6 +1,6 @@
 {
-  "name": "Gemini API + Google Maps Platform",
-  "description": "Try a generative AI app with the Gemini API and Google Maps Platform",
+  "name": "Gemini API + Google Maps Platform with Code Assist MCP",
+  "description": "Try a generative AI app with the Gemini API and Google Maps Platform using Code Assist MCP",
   "categories": [
     "AI & ML"
   ],
